@@ -126,7 +126,7 @@ class ToolsController extends Controller
         $file = $_FILES;
         $file_name = $file['file']['name'];
         $file_tmp_path =$file['file']['tmp_name'];
-        $path_api="../../api/web/uploads/".date("Ymd");
+        $path_api="../../api/web/uploads/PDF";
         if (!is_dir($path_api)){
             mkdir($path_api,0777,true);
         }
@@ -141,7 +141,7 @@ class ToolsController extends Controller
         $file_save_name=iconv("gb2312","UTF-8", $file_save_name);
         $arr=[
             "code"=>"200",
-            "data"=>strip_tags(Config::findOne(['name'=>'WEB_SITE_RESOURCES_URL'])->value).'uploads/'. date('Ymd').'/'.$file_save_name,
+            "data"=>strip_tags(Config::findOne(['name'=>'WEB_SITE_RESOURCES_URL'])->value).'uploads/PDF/'.$file_save_name,
         ];
         echo json_encode($arr);
     }
