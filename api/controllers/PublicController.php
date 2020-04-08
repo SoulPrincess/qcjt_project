@@ -7,6 +7,7 @@
  */
 namespace api\controllers;
 use common\models\Config;
+use vendor\tools\VerifyTools;
 use yii\web\Controller;
 use yii;
 use yii\helpers\ArrayHelper;
@@ -24,19 +25,20 @@ class PublicController extends Controller{
     ];//所属行业类型
     public $enableCsrfValidation = false;
 
-    public function behaviors()
-    {
-        return ArrayHelper::merge([
-            [
-                'class' => Cors::className(),
-                'cors' => [
-                    'Origin' => ['*'],
-                    'Access-Control-Request-Method' => ['GET','PUT','POST', 'DELETE'],
-                    'Access-Control-Allow-Credentials' => true,
-                ],
-            ],
-        ], parent::behaviors());
-    }
+//    public function behaviors()
+//    {
+//        return ArrayHelper::merge([
+//            [
+//                'class' => Cors::className(),
+//                'cors' => [
+//                    //'Origin' => ['*'],
+//                    //'Access-Control-Request-Method' => ['GET','PUT','POST','DELETE'],
+//                   // 'Access-Control-Allow-Credentials' => true,
+//                   // 'Access-Control-Allow-Headers' => ['x-requested-with','content-type'],
+//                ],
+//            ],
+//        ], parent::behaviors());
+//    }
     /**
      * @Notes:接收前端json数据
      * @return mixed
@@ -133,7 +135,7 @@ class PublicController extends Controller{
             'code' => $code,
             'msg' => $msg ? $msg : Yii::$app->params[$code]
         );
-        die(json_encode($result, $option));
+        return json_encode($result, $option);
     }
 
     /*
@@ -156,12 +158,14 @@ class PublicController extends Controller{
             die("只允许上传pdf文件！");
         }
         $file_save_name =  $file_name;
+        $file_save_name=iconv("UTF-8","gb2312", $file_save_name);
         move_uploaded_file($file_tmp_path, $dir.'/'.$file_save_name);
+        $file_save_name=iconv("gb2312","UTF-8", $file_save_name);
         $arr=[
             "code"=>"200",
-            "data"=>strip_tags(Config::findOne(['name'=>'WEB_SITE_RESOURCES_URL'])->value) .'uploads/'. date('Ymd').'/'.$file_save_name,
+            "data"=>strip_tags(Config::findOne(['name'=>'WEB_SITE_RESOURCES_URL'])->value) .'uploads/pdf/'.$file_save_name,
         ];
-        echo json_encode($arr);
+        return json_encode($arr);
     }
     /*
       * layui富文本上传图片
@@ -191,7 +195,7 @@ class PublicController extends Controller{
                 'code' => 0,
                 'msg'=>'',
                 'data' =>array(
-                    'src' =>Config::findOne(['name'=>'WEB_SITE_RESOURCES_URL'])->value.'uploads/'.date("Ymd").'/'.$file_save_name
+                    'src' =>strip_tags(Config::findOne(['name'=>'WEB_SITE_RESOURCES_URL'])->value).'uploads/'.date("Ymd").'/'.$file_save_name
                 ),
             );
         }else{
@@ -204,6 +208,7 @@ class PublicController extends Controller{
             );
         }
 
-        echo json_encode($arr);
+        return json_encode($arr);
     }
+
 }

@@ -2,7 +2,6 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-use yii\widgets\Pjax;
 use backend\assets\LayuiAsset;
 use yii\helpers\Url;
 
@@ -12,10 +11,8 @@ $this->registerJs($this->render('js/index.js'));
 <blockquote class="layui-elem-quote" style="font-size: 14px;">
 	<?php  echo $this->render('_search', ['model' => $searchModel]); ?>
 </blockquote>
-<div class="layui-form menu-index">
-    <?php Pjax::begin(); ?>
-    <?=
-    GridView::widget([
+<div class="layui-form company-index">
+    <?= GridView::widget([
         'dataProvider' => $dataProvider,
 		'options' => ['class' => 'grid-view','style'=>'overflow:auto', 'id' => 'grid'],
 		'tableOptions'=> ['class'=>'layui-table'],
@@ -28,14 +25,19 @@ $this->registerJs($this->render('js/index.js'));
 				'maxButtonCount'=>5,
         ],
         'columns' => [
-			[
-				'class' => 'backend\widgets\CheckboxColumn',
-				'checkboxOptions' => ['lay-skin'=>'primary','lay-filter'=>'choose'],
-				'headerOptions' => ['width'=>'50','style'=> 'text-align: center;'],
-				'contentOptions' => ['style'=> 'text-align: center;']
-			],
+            [
+                'class' => 'backend\widgets\CheckboxColumn',
+                'checkboxOptions' => ['lay-skin'=>'primary','lay-filter'=>'choose'],
+                'headerOptions' => ['width'=>'20','style'=> 'text-align: center;'],
+                'contentOptions' => ['style'=> 'text-align: center;']
+            ],
             'company_name',
-            'company_allname',
+            [
+                'attribute' => 'company_allname',
+                'contentOptions' => ['style'=> 'text-align: center;'],
+                'headerOptions' => ['width'=>'80','style'=> 'text-align: center;'],
+            ],
+            //'company_allname',
             'companyType.type_name',
             'strictType.name',
             [
@@ -126,6 +128,5 @@ $this->registerJs($this->render('js/index.js'));
         ],
     ]);
     ?>
-<?php Pjax::end(); ?>
 
 </div>

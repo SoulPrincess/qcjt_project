@@ -61,14 +61,6 @@ return [
                 "<controller:\w+>/<action:\w+>"=>"<controller>/<action>"
             ],
         ],
-//        'urlManager' => [
-//            'enablePrettyUrl' => true,
-//            'showScriptName' => false,
-//			'suffix'=>'.html',
-//            'rules' => [
-//				"<controller:\w+>/<id:\d+>"=>"<controller>/view",
-//            ],
-//        ],
     ],
     'params' => $params,
 ];

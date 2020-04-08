@@ -2,15 +2,17 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use backend\assets\AppAsset;
 
 /**
  * @var yii\web\View $this
- * @var rbac\models\searchs\Menu $model
+ * @var rbac\models\searchs\company $model
  * @var yii\widgets\ActiveForm $form
  */
+AppAsset::register($this);
 ?>
 
-<div class="menu-search">
+<div class="company-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],

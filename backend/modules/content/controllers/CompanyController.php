@@ -11,7 +11,7 @@ use rbac\components\Helper;
 use yii;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
-use content\models\searchs\company as CompanySearch;
+use content\models\searchs\Company as CompanySearch;
 use yii\web\NotFoundHttpException;
 class CompanyController extends Controller{
     /**
@@ -20,6 +20,9 @@ class CompanyController extends Controller{
     public function behaviors()
     {
         return [
+            'limit' => [//接口限制过滤器
+                'class' => 'api\filters\LimitFilter',
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [

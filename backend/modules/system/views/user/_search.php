@@ -21,7 +21,7 @@ AppAsset::register($this);
 	   ],
     ]); ?>
 
-    <?= $form->field($model, 'username')->textInput(['class'=>'layui-input search_input']) ?>
+    <?= $form->field($model, 'member_name')->textInput(['class'=>'layui-input search_input']) ?>
 
     <?php // echo $form->field($model, 'mobile') ?>
 
@@ -39,9 +39,6 @@ AppAsset::register($this);
         <?= Html::submitButton('查找', ['class' => 'layui-btn layui-btn-normal']) ?>
         <?= Html::button('添加', ['class' => 'layui-btn layui-default-add']) ?>
 		<?= Html::button('批量删除', ['class' => 'layui-btn layui-btn-danger gridview layui-default-delete-all']) ?>
-    </div>
-	<div align='right' class="form-group" >
-        <?= Html::a('<i class="iconfont" data-icon="&#xe753;">&#xe753;</i>  <cite>在线用户</cite>' , 'javascript:;', ['data-url'=>Url::to(['/system/user/online-users']),'class' => "layui-btn layui-btn-normal online-users"]) ?>
     </div>
     <?php ActiveForm::end(); ?>
 

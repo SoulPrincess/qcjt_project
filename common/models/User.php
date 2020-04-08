@@ -8,21 +8,18 @@ use yii\web\IdentityInterface;
 use yii\helpers\ArrayHelper;
 
 /**
- * This is the model class for table "t_user".
+ * This is the model class for table "t_member".
  *
  * @property string $id
- * @property string $username
- * @property string $nickname
+ * @property string $member_name
+ * @property string $mobile
  * @property string $head_pic
  * @property string $auth_key
  * @property string $password_hash
  * @property string $password_reset_token
  * @property string $access_token
- * @property string $mobile
  * @property string $email
  * @property integer $status
- * @property integer $r_id
- * @property integer $created_at
  * @property string $created_address
  * @property string $created_ip
  * @property integer $last_login_date
@@ -31,6 +28,7 @@ use yii\helpers\ArrayHelper;
  * @property integer $integral
  * @property string $balance
  * @property integer $updated_at
+ * @property integer $created_at
  */
 
 class User extends ActiveRecord implements IdentityInterface
@@ -44,7 +42,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function tableName()
     {
-        return '{{%user}}';
+        return '{{%member}}';
     }
 
     /**
@@ -65,10 +63,9 @@ class User extends ActiveRecord implements IdentityInterface
         return [
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
-			[['status', 'r_id', 'created_at', 'last_login_date', 'integral', 'updated_at'], 'integer'],
-            [['username'], 'required'],
-            ['username', 'string', 'min'=>6, 'max' => 50],
-			['nickname', 'string', 'max' => 32],
+			[['status',  'created_at', 'last_login_date', 'integral', 'updated_at'], 'integer'],
+            [['member_name'], 'required'],
+            ['member_name', 'string', 'min'=>3, 'max' => 20],
             ['email', 'email'],
 			[['head_pic', 'email'], 'string', 'max' => 255],
 			['mobile', 'filter', 'filter' => 'trim'],
@@ -76,7 +73,7 @@ class User extends ActiveRecord implements IdentityInterface
 			['mobile','match','pattern'=>'/^[1][34578][0-9]{9}$/'],
 			['mobile', 'unique'],
 			[['access_token'], 'string', 'max' => 100],
-            [['username','email'],'unique'],
+            [['member_name','email'],'unique'],
 			[['balance'], 'number'],
 			[['created_address', 'last_login_address'], 'string', 'max' => 200],
             [['created_ip', 'last_login_ip'], 'string', 'max' => 15],
@@ -116,14 +113,14 @@ class User extends ActiveRecord implements IdentityInterface
 		}
     }
     /**
-     * Finds user by username
+     * Finds user by member_name
      *
-     * @param string $username
+     * @param string $name
      * @return static|null
      */
-    public static function findByUsername($username)
+    public static function findByMembername($name)
     {
-        return static::findOne(['username' => $username, 'status' => self::STATUS_ACTIVE]);
+        return static::findOne(['member_name' => $name, 'status' => self::STATUS_ACTIVE]);
     }
     /**
      * Finds user by email
@@ -259,8 +256,7 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return [
             'id' => 'ID',
-            'username' => '用户账号',
-            'nickname' => '昵称',
+            'member_name' => '用户账号',
             'head_pic' => '头像',
             'auth_key' => 'AuthKey',
             'password_hash' => '密码',
@@ -269,7 +265,6 @@ class User extends ActiveRecord implements IdentityInterface
             'mobile' => '手机',
             'email' => '电子邮件',
             'status' => '状态',
-            'r_id' => '用户等级',
             'created_at' => '注册时间',
             'created_address' => '注册地点',
             'created_ip' => '注册IP',
@@ -282,16 +277,16 @@ class User extends ActiveRecord implements IdentityInterface
         ];
     }
 	
-	public static function getUserName($id){
-		return self::findOne($id)->username;
+	public static function getMemberName($id){
+		return self::findOne($id)->member_name;
 	}
 	/**
 	 * 获取类别的下拉菜单
 	 * @return type
-	 */
+
 	public static function dropDown($r_id){
 		$data = self::find()->where(['>','r_id',$r_id])->asArray()->all();
 		$data_list = ArrayHelper::map($data, 'id', 'username');
 		return $data_list;
-	} 
+	} */
 }

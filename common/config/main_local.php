@@ -11,23 +11,31 @@ return[
             'tablePrefix'=>'t_',
 
         ],
-        //发送邮箱设置
-        'mailer'=>[
+        'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
             'viewPath' => '@common/mail',
-            'useFileTransport' => false,    //这里一定要改成false，不然邮件不会发送
-            'transport' => [
-                'class' => 'Swift_SmtpTransport',
-                'host' => 'smtp.163.com',
-                'username' => '15639277320@163.com',
-                'password' => '123456',        //如果是163邮箱，此处要填授权码
-                'port' => '25',
-                'encryption' => 'tls',
-            ],
-            'messageConfig'=>[
-                'charset'=>'UTF-8',
-                'from'=>['15639277320@163.com'=>'admin']
+        ],
+        //短信组件，采用短信
+        'sms'=>[
+            'class'=>'common\components\sms'
+        ],
+        //自定义生成中文昵称
+        'nickname'=>[
+            'class'=>'common\components\nickname'
+        ],
+        //自定义根据ip地址获取物理地址
+        'ipaddress'=>[
+            'class'=>'common\components\ipaddress'
+        ],
+        //微信组件
+        'wechat'=>[
+            'class'=>'common\components\wechat',
+            'config'=>[
+                'token'=>'',
+                'appid'=>'',
+                'appsecret'=>'',
+                'encodingaeskey'=>'',
             ]
         ]
-    ]
+    ],
 ];

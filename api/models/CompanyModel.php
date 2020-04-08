@@ -33,19 +33,22 @@ class CompanyModel extends PublicModel {
 
     /*
   * 企业详情信息
-  * $id int
+  * $where array
   * @author:lhp
   * @time:2020-3-26
   * */
-    public function getCompanyOneDetail($id){
+    public function getCompanyOneDetail($where=[]){
 
-        $config_data=(new Query())
-            ->select(['c.id','company_name','company_allname','company_logo','pro_describe','company_describe','linkman','phone','post','service_charge','t.type_name','t.id type_id','s.name strict_name','c.company_pdf'])
+        $query=new Query();
+        $query->select(['c.id','company_name','company_allname','company_logo','pro_describe','company_describe','linkman','phone','post','service_charge','t.type_name','t.id type_id','s.name strict_name','c.company_pdf'])
             ->from(['c'=>$this->COMPANY_TABLE])
             ->leftJoin(['t'=>$this->COMPANY_TYPE_TABLE],'t.id=c.type_id')
             ->leftJoin(['s'=>$this->STRICT_TABLE],'s.id=c.strict_id')
-            ->where(['c.id'=>$id,'c.state'=>'1'])
-            ->one();
+            ->where(['c.state'=>'1']);
+        if($where){
+            $query->andWhere($where);
+        }
+            $config_data=$query->one();
 
         return $config_data;
     }
@@ -78,5 +81,27 @@ class CompanyModel extends PublicModel {
             ->all();
         $data= $this->recursion($config_data,0);
         return $data;
+    }
+
+    /*
+* 企业详情信息
+* $where array
+* @author:lhp
+* @time:2020-3-26
+* */
+    public function getCompanysDetail($where=[]){
+
+        $query=new Query();
+        $query->select(['c.id','company_name','company_allname','company_logo','pro_describe','company_describe','linkman','phone','post','service_charge','t.type_name','t.id type_id','s.name strict_name','c.company_pdf'])
+            ->from(['c'=>$this->COMPANY_TABLE])
+            ->leftJoin(['t'=>$this->COMPANY_TYPE_TABLE],'t.id=c.type_id')
+            ->leftJoin(['s'=>$this->STRICT_TABLE],'s.id=c.strict_id')
+            ->where(['c.state'=>'1']);
+        if($where){
+            $query->andWhere($where);
+        }
+        $config_data=$query->all();
+
+        return $config_data;
     }
 }

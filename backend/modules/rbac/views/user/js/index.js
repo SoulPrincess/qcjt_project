@@ -107,7 +107,7 @@ layui.config({
         var index = layui.layer.open({
             title : "修改用户",
             type : 2,
-            area: ['100%', '100%'], //宽高
+            area:['400px', '520px'],
             content :[href,"no"],
             end: function () {
                 location.reload();

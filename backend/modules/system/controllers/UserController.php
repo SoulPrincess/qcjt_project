@@ -2,6 +2,7 @@
 
 namespace system\controllers;
 
+use common\components\ipaddress;
 use Yii;
 use common\models\User;
 use common\models\searchs\UserSearch;
@@ -61,14 +62,14 @@ class UserController extends Controller
      * @return mixed
      */
     public function actionCreate()
-    {        
+    {   $ipaddress= new ipaddress();
         $model = new User();
 		$post_data = Yii::$app->request->post();
         if ($model->load($post_data) && $model->validate()) {
             $model->generateAuthKey();
             $model->password_hash=Yii::$app->security->generatePasswordHash($post_data['User']['password_hash']);
-			$model->created_ip = Yii::$app->ipaddress->getIp();
-			$model->created_address = Yii::$app->ipaddress->getIpAddress($model->created_ip);
+			$model->created_ip = $ipaddress->getIp();
+			$model->created_address = $ipaddress->getIpAddress($model->created_ip);
             if($model->save()){
                 return $this->redirect(['view', 'id' => $model->id]);
             }

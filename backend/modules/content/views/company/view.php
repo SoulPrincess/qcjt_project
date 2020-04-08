@@ -4,7 +4,7 @@ use backend\assets\LayuiAsset;
 use yii\helpers\Html;
 LayuiAsset::register($this);
 ?>
-<div class="menu-view">
+<div class="company-view">
     <?=DetailView::widget([
         'model' => $model,
 		'options' => ['class' => 'layui-table'],

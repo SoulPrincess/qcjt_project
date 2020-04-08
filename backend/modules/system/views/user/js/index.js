@@ -12,8 +12,8 @@ layui.config({
 			var index = layui.layer.open({
 				title : "添加用户",
 				type : 2,
-                area: ['600px', '680px'], //宽高
-				content : ["<?= yii\helpers\Url::to(['create']); ?>","no"],
+                area: ['600px', '500px'], //宽高
+				content : ["<?= yii\helpers\Url::to(['create']); ?>"],
                 end: function () {
                     location.reload();
                 }
@@ -155,8 +155,8 @@ layui.config({
         var index = layui.layer.open({
             title : "修改用户",
             type : 2,
-            area:['460px', '680px'], //宽高
-            content :[href,"no"],
+            area:['460px', '500px'], //宽高
+            content :[href],
             end: function () {
                 location.reload();
             }

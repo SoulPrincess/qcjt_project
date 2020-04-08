@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: yidashi
- * Date: 16/3/2
- * Time: 下午8:05
- */
 
 namespace backup\controllers;
 

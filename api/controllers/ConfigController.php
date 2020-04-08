@@ -8,6 +8,7 @@
 namespace api\controllers;
 
 use api\models\ConfigModel;
+use api\models\CompanyType;
 
 class ConfigController extends PublicController {
 
@@ -32,6 +33,17 @@ class ConfigController extends PublicController {
     public function actionBlogrollIndex(){
         $configmodel= new ConfigModel();
         $data= $configmodel->getBlogrollData();
+        return $this->result($data,'200','成功');
+    }
+
+    /*
+    * 严选类别
+    * @time:2020/04/07
+    * @author:Lhp
+    */
+    public function actionStrictType(){
+        $type=new CompanyType();
+        $data=$type->strictType();
         return $this->result($data,'200','成功');
     }
 }

@@ -7,8 +7,8 @@
  */
 namespace content\controllers;
 use Yii;
-use content\models\companyType;
-use content\models\searchs\companyType as CompanyTypeSearch;
+use content\models\CompanyType;
+use content\models\searchs\CompanyType as CompanyTypeSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

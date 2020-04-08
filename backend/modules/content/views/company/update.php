@@ -2,7 +2,7 @@
 use backend\assets\LayuiAsset;
 LayuiAsset::register($this);
 ?>
-<div class="menu-update">
+<div class="company-update">
     <?=
     $this->render('_form', [
         'model' => $model,

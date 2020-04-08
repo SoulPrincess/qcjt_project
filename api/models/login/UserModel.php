@@ -1,20 +1,18 @@
 <?php
 
-namespace rbac\models;
+namespace api\models\login;
 
 use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
-use rbac\components\Configs;
 
 /**
  * User model
  *
  * @property integer $id
  * @property string $username
- * @property string $nickname 
  * @property string $password_hash
  * @property string $password_reset_token
  * @property string $email
@@ -22,76 +20,30 @@ use rbac\components\Configs;
  * @property integer $status
  * @property integer $created_at
  * @property integer $updated_at
- * @property string $password write-only password
- *
- * @property UserProfile $profile
+ * @property string $passwd write-only password
  */
-class User extends ActiveRecord implements IdentityInterface
+class UserModel extends ActiveRecord implements IdentityInterface
 {
-    const STATUS_INACTIVE = 0;
-    const STATUS_ACTIVE = 10;
+
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public static function tableName()
     {
-        return Configs::instance()->userTable;
+        return 'school_account';
     }
 
     /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            TimestampBehavior::className(),
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            ['status', 'default', 'value' => self::STATUS_ACTIVE],
-            ['nickname', 'string', 'max' => 32],
-            ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE]],
-            [['head_pic', 'email'], 'string', 'max' => 255],
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'username' => '用户名',
-            'nickname' => '用户昵称',
-            'head_pic' => '用户头像',
-            'email' => '电子邮箱',
-            'mobile' => '手机号码',
-            'status' => '状态',
-            'created_at'=>'创建时间',
-            'updated_at'=>'修改时间',
-            'auth_key'=>'授权码',
-            'password_hash'=>'密码',
-            'password_reset_token'=>'重置码',
-        ];
-    }
-    /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public static function findIdentity($id)
     {
-        return static::findOne(['id' => $id, 'status' => self::STATUS_ACTIVE]);
+        return static::findOne(['id' => $id]);
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public static function findIdentityByAccessToken($token, $type = null)
     {
@@ -106,7 +58,32 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findByUsername($username)
     {
-        return static::findOne(['username' => $username, 'status' => self::STATUS_ACTIVE]);
+        return static::findOne(['account' => $username]);
+    }
+
+
+    /**
+     * @Notes:学校账号登录查询
+     * @param $username
+     * @return User|null
+     * @User:lhp
+     * @Time: 2020/04/02
+     */
+    public static function findSchoolAccount($username)
+    {
+        return static::findOne(['account' => $username, 'status' => 1]);
+    }
+
+    /**
+     * @Notes:学校账号状态查询
+     * @param $username
+     * @return User|null
+     * @User:lhp
+     * @Time: 2020/04/02
+     */
+    public static function findSchoolAccountStatus($username)
+    {
+        return static::findOne(['account' => $username]);
     }
 
     /**
@@ -123,29 +100,29 @@ class User extends ActiveRecord implements IdentityInterface
 
         return static::findOne([
             'password_reset_token' => $token,
-            'status' => self::STATUS_ACTIVE,
         ]);
     }
+
 
     /**
      * Finds out if password reset token is valid
      *
      * @param string $token password reset token
-     * @return boolean
+     * @return bool
      */
     public static function isPasswordResetTokenValid($token)
     {
         if (empty($token)) {
             return false;
         }
+
+        $timestamp = (int)substr($token, strrpos($token, '_') + 1);
         $expire = Yii::$app->params['user.passwordResetTokenExpire'];
-        $parts = explode('_', $token);
-        $timestamp = (int) end($parts);
         return $timestamp + $expire >= time();
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getId()
     {
@@ -153,7 +130,7 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getAuthKey()
     {
@@ -161,7 +138,7 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function validateAuthKey($authKey)
     {
@@ -169,15 +146,16 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * Validates password
+     * Validates passwd
      *
-     * @param string $password password to validate
-     * @return boolean if password provided is valid for current user
+     * @param string $passwd passwd to validate
+     * @return bool if passwd provided is valid for current user
      */
-    public function validatePassword($password)
+    public function validatePassword($passwd)
     {
-        return Yii::$app->security->validatePassword($password, $this->password_hash);
+        return $this->passwd === ($passwd);
     }
+
 
     /**
      * Generates password hash from password and sets it to the model
@@ -213,8 +191,5 @@ class User extends ActiveRecord implements IdentityInterface
         $this->password_reset_token = null;
     }
 
-    public static function getDb()
-    {
-        return Configs::userDb();
-    }
+
 }

@@ -35,11 +35,6 @@ $this->registerJs($this->render('js/index.js'));
 				'contentOptions' => ['style'=> 'text-align: center;']
 			],
 			[
-				'attribute' => 'nickname',
-				'headerOptions' => ['width'=>'100','style'=> 'text-align: center;'],
-				'contentOptions' => ['style'=> 'text-align: center;']
-			],
-			[
 				'attribute' => 'head_pic',
 				'contentOptions' => ['style'=> 'text-align: center;'],
 				'headerOptions' => ['width'=>'110','style'=> 'text-align: center;'],
@@ -51,16 +46,10 @@ $this->registerJs($this->render('js/index.js'));
                     ],
                 ],
 			],
-            'username',
+            'member_name',
             'email:email',
 			[
 				'attribute' => 'mobile',
-			],
-			[
-				'attribute' => 'r_id',
-				'value' => function($model){
-					return UserRank::findOne($model->r_id)->name;
-				}
 			],
             [
                 'attribute' => 'created_at',

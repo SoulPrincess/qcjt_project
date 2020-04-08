@@ -1,5 +1,6 @@
 <?php
 namespace api\controllers;
+header('Access-Control-Allow-Headers:x-requested-with,content-type');
 /**
  * Created by PhpStorm.
  * User: EDZ
@@ -10,7 +11,7 @@ use yii;
 use api\models\CompanyModel;
 class CompanyController extends PublicController{
     /*
-    * 所有企业信息
+    * 严选企业信息
     * @time:2020-3-26
     * @author:Lhp
    */
@@ -35,7 +36,7 @@ class CompanyController extends PublicController{
         $json = $this->get_json();
         $id = $this->verifyEmpty($json, 'id');
         if($id){
-            $data= $companymodel->getCompanyOneDetail($id);
+            $data= $companymodel->getCompanyOneDetail(['c.id'=>$id]);
             return $this->result($data,'200','成功');
         }else{
             return $this->result([],'201','参数不能为空');
@@ -69,6 +70,25 @@ class CompanyController extends PublicController{
             return $this->result([
                 'data'=>$alltype
             ]);
+        }
+    }
+
+    /*
+    * 类别企业
+    * @time:2020/04/07
+    * @author:Lhp
+    */
+    public function actionStrictCompany(){
+        if(self::is_ajax()){
+            $json = $this->get_json();
+            $strict_id =$this->verifyEmpty($json,'strict_id');//严选类别id
+            $where['strict_id']=$strict_id;
+            $where['check']=2;
+            $type=new CompanyModel();
+            $data=$type->getCompanysDetail($where);
+            return $this->result($data,'200','成功');
+        }else{
+            return $this->result([],'-1','请求失败！');
         }
     }
 }

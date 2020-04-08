@@ -11,8 +11,7 @@ LayuiAsset::register($this);
 		'template' => '<tr><th width="100px">{label}</th><td>{value}</td></tr>', 
         'attributes' => [
             'id',
-            'username',
-			'nickname',
+            'member_name',
             [
                 "attribute"=>"head_pic",
                 "format"=>[
@@ -30,12 +29,6 @@ LayuiAsset::register($this);
 				'attribute' => 'status',
 				'value' => function($model){
 					return $model->status == 0 ? '禁用' : '启用';
-				}
-			],
-			[
-				'attribute' => 'r_id',
-				'value' => function($model){
-					return UserRank::findOne($model->r_id)->name;
 				}
 			],
             [

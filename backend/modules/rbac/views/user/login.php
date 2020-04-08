@@ -47,9 +47,9 @@ $fieldOptions2 = [
 		<div style="float: left;position: relative;margin-top: 5px;color: #999;padding-left: -8px;font-size: 12px;">
 			<span>记住密码</span>
 		</div>
-<!--		<div style="position: absolute;right: 18px;bottom: 37px;">-->
-<!--			--><?//= Html::a('忘记密码', ['/rbac/user/reset-password'], ['class' => 'layui-form-mid layui-word-aux',"style"=>'float:right;padding: 5px 0;']) ?>
-<!--		</div>-->
+		<div style="position: absolute;right: 18px;bottom: 37px;">
+			<?= Html::a('忘记密码', ['/rbac/user/request-password-reset'], ['class' => 'layui-form-mid layui-word-aux',"style"=>'float:right;padding: 5px 0;']) ?>
+		</div>
 	</div>
 	<?php ActiveForm::end(); ?>
 </div>
