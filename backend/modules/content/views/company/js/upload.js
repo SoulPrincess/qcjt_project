@@ -3,7 +3,7 @@ layui.use(['upload','layer','layedit'], function(){
 
     upload.render({
         elem: '#test4',
-        url: "<?=yii\helpers\Url::to(['/tools/upload'])?>",
+        url: "<?=yii\helpers\Url::to(['/tools/upload?name=yanxuan'])?>",
         done: function(res){
             if(res.code==200){
                 //修改上传成功后需要修改的地方
@@ -21,7 +21,7 @@ layui.use(['upload','layer','layedit'], function(){
     var layedit = layui.layedit;
     layedit.set({
         uploadImage: {
-            url: "<?=yii\helpers\Url::to(['/tools/uploadedit'])?>",
+            url: "<?=yii\helpers\Url::to(['/tools/uploadedit?name=yanxuan'])?>",
             type: 'post',
             done: function (res) {
                 // 如果上传失败
@@ -42,7 +42,7 @@ layui.use(['upload','layer','layedit'], function(){
 
     upload.render({
         elem: '#test6',
-        url: "<?=yii\helpers\Url::to(['/tools/upload-pdf'])?>",
+        url: "<?=yii\helpers\Url::to(['/tools/upload-pdf?name=yanxuan'])?>",
         accept: 'file', //普通文件
         done: function(res){
             if(res.code==200){console.log(res);
