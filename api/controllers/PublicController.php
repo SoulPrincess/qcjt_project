@@ -210,5 +210,28 @@ class PublicController extends Controller{
 
         return json_encode($arr);
     }
-
+    public function actionUploadPdf1()
+    {
+        $file = $_FILES;
+        $file_name = $file['file']['name'];
+        $file_tmp_path =$file['file']['tmp_name'];
+        $dir = "../web/uploads/PDF";
+        if (!is_dir($dir)){
+            mkdir($dir,0777);
+        }
+        $type = substr(strrchr($file_name, '.'), 1);
+        $allow_type = ['pdf'];
+        if(!in_array($type, $allow_type)){
+            die("只允许上传pdf文件！");
+        }
+        $file_save_name =  $file_name;
+        $file_save_name=iconv("UTF-8","gb2312", $file_save_name);
+        move_uploaded_file($file_tmp_path, $dir.'/'.$file_save_name);
+        $file_save_name=iconv("gb2312","UTF-8", $file_save_name);
+        $arr=[
+            "code"=>"200",
+            "data"=>strip_tags(Config::findOne(['name'=>'WEB_SITE_RESOURCES_URL'])->value) .'uploads/PDF/'.$file_save_name,
+        ];
+        return json_encode($arr);
+    }
 }

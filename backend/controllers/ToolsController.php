@@ -49,7 +49,11 @@ class ToolsController extends Controller
             ];
             echo json_encode($arr);die;
         }
-        $path_api="../../api/web/uploads/";
+        if(isset($_GET['name'])){
+            $path_api="../../api/web/uploads/".$_GET['name'].'/';
+        }else{
+            $path_api="../../api/web/uploads/";
+        }
         $dir_api = $path_api.date("Ymd");
         if (!is_dir($dir_api)){
             mkdir($dir_api,0777,true);
@@ -67,9 +71,14 @@ class ToolsController extends Controller
 		}
         $file_save_name =date("YmdHis",time()) . mt_rand(1000, 9999) . '.' . $type;
         move_uploaded_file($file_tmp_path, $dir_api.'/'.$file_save_name);
+        if(isset($_GET['name'])){
+            $url=strip_tags(Config::findOne(['name'=>'WEB_SITE_RESOURCES_URL'])->value).'uploads/'.$_GET['name'].'/'.date("Ymd").'/'.$file_save_name;
+        }else{
+            $url=strip_tags(Config::findOne(['name'=>'WEB_SITE_RESOURCES_URL'])->value).'uploads/'.date("Ymd").'/'.$file_save_name;
+        }
         $arr=[
             "code"=>"200",
-            "data"=> strip_tags(Config::findOne(['name'=>'WEB_SITE_RESOURCES_URL'])->value).'uploads/'.date("Ymd").'/'.$file_save_name
+            "data"=> $url
         ];
         echo json_encode($arr);
     }
@@ -83,7 +92,11 @@ class ToolsController extends Controller
         $file = $_FILES;
         $file_name = $file['file']['name'];
         $file_tmp_path =$file['file']['tmp_name'];
-        $path_api="../../api/web/uploads/".date("Ymd");
+        if(isset($_GET['name'])){
+            $path_api="../../api/web/uploads/".$_GET['name'].'/'.date("Ymd");
+        }else{
+            $path_api="../../api/web/uploads/".date("Ymd");
+        }
         if (!is_dir($path_api)){
             mkdir($path_api,0777,true);
         }
@@ -95,13 +108,18 @@ class ToolsController extends Controller
         }
         $file_save_name = date("YmdHis",time()) . mt_rand(1000, 9999) . '.' . $type;
         $info= move_uploaded_file($file_tmp_path, $path_api.'/'.$file_save_name);
+        if(isset($_GET['name'])){
+            $url=strip_tags(Config::findOne(['name'=>'WEB_SITE_RESOURCES_URL'])->value).'uploads/'.$_GET['name'].'/'.date("Ymd").'/'.$file_save_name;
+        }else{
+            $url=strip_tags(Config::findOne(['name'=>'WEB_SITE_RESOURCES_URL'])->value).'uploads/'.date("Ymd").'/'.$file_save_name;
+        }
         if($info){
             //图片上传成功后，组好json格式，返回给前端
             $arr   = array(
                 'code' => 0,
                 'msg'=>'',
                 'data' =>array(
-                    'src' =>strip_tags(Config::findOne(['name'=>'WEB_SITE_RESOURCES_URL'])->value).'uploads/'.date("Ymd").'/'.$file_save_name
+                    'src' =>$url
                 ),
             );
         }else{
@@ -126,7 +144,12 @@ class ToolsController extends Controller
         $file = $_FILES;
         $file_name = $file['file']['name'];
         $file_tmp_path =$file['file']['tmp_name'];
-        $path_api="../../api/web/uploads/PDF";
+        if(isset($_GET['name'])){
+            $path_api="../../api/web/uploads/".$_GET['name'].'/PDF';
+        }else{
+            $path_api="../../api/web/uploads/PDF";
+        }
+
         if (!is_dir($path_api)){
             mkdir($path_api,0777,true);
         }
@@ -139,9 +162,14 @@ class ToolsController extends Controller
         $file_save_name=iconv("UTF-8","gb2312", $file_save_name);
         move_uploaded_file($file_tmp_path, $path_api.'/'.$file_save_name);
         $file_save_name=iconv("gb2312","UTF-8", $file_save_name);
+        if(isset($_GET['name'])){
+            $url=strip_tags(Config::findOne(['name'=>'WEB_SITE_RESOURCES_URL'])->value).'uploads/'.$_GET['name'].'/PDF/'.$file_save_name;
+        }else{
+            $url=strip_tags(Config::findOne(['name'=>'WEB_SITE_RESOURCES_URL'])->value).'uploads/PDF/'.$file_save_name;
+        }
         $arr=[
             "code"=>"200",
-            "data"=>strip_tags(Config::findOne(['name'=>'WEB_SITE_RESOURCES_URL'])->value).'uploads/PDF/'.$file_save_name,
+            "data"=>$url,
         ];
         echo json_encode($arr);
     }

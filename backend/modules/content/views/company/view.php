@@ -12,7 +12,7 @@ LayuiAsset::register($this);
             'company_name',
             'company_allname',
             'companyType.type_name:text:类型名称',
-            'strictType.name:text:严选类别',
+           // 'strictType.name:text:严选类别',
             [
                 'attribute' => 'company_logo',
                 'contentOptions' => ['style'=> 'text-align: center;'],
@@ -33,6 +33,32 @@ LayuiAsset::register($this);
             'post',
             'company_pdf',
             [
+                'attribute' => 'state',
+                'format' => 'html',
+                'value' => function($model) {
+                    return $model->state==2?'<font color="gray">待审核</font>':
+                        ($model->state==3?'<font color="red">不通过</font>':'<font color="green">已审核</font>');
+                },
+                'contentOptions' => ['style'=> 'text-align: center;'],
+                'headerOptions' => [
+                    'width' => '10%',
+                    'style'=> 'text-align: center;'
+                ],
+                'label' => '审核',
+            ],[
+                'attribute' => 'strict_state',
+                'format' => 'html',
+                'value' => function($model) {
+                    return $model->strict_state==2?'<font color="red">否</font>':'<font color="green">是</font>';
+                },
+                'contentOptions' => ['style'=> 'text-align: center;'],
+                'headerOptions' => [
+                    'width' => '10%',
+                    'style'=> 'text-align: center;'
+                ],
+                'label' => '严选',
+            ],
+            [
                 'attribute' => 'check',
                 'format' => 'html',
                 'value' => function($model) {
@@ -44,19 +70,7 @@ LayuiAsset::register($this);
                     'style'=> 'text-align: center;'
                 ],
             ],
-            [
-                'attribute' => 'state',
-                'format' => 'html',
-                'value' => function($model) {
-                    return $model->state==2?'<font color="red">待审核</font>':'<font color="green">已审核</font>';
-                },
-                'contentOptions' => ['style'=> 'text-align: center;'],
-                'headerOptions' => [
-                    'width' => '10%',
-                    'style'=> 'text-align: center;'
-                ],
-                'label' => '审核状态',
-            ],
+            'reason',
             [
                 'attribute' => 'created_at',
                 'contentOptions' => ['class'=>'text-center'],

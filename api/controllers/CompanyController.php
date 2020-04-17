@@ -3,7 +3,7 @@ namespace api\controllers;
 header('Access-Control-Allow-Headers:x-requested-with,content-type');
 /**
  * Created by PhpStorm.
- * User: EDZ
+ * User: LHP
  * Date: 2020/3/26
  * Time: 11:15
  */
@@ -16,15 +16,20 @@ class CompanyController extends PublicController{
     * @author:Lhp
    */
     public function actionIndex(){
-
-        $companymodel= new CompanyModel();
-
-        $data= $companymodel->getCompanyDetail();
-
+        $type=new CompanyModel();
+        $data=$type->getCompanysDetail();
         return $this->result($data,'200','成功');
-
     }
-
+    /*
+       * 关于我们
+       * @time:2020-4-9
+       * @author:Lhp
+      */
+    public function actionAbout(){
+        $type=new CompanyModel();
+        $data=$type->getCompanyDetail();
+        return $this->result($data,'200','成功');
+    }
     /*
     * 企业详情
     * @time:2020-3-26
@@ -74,21 +79,21 @@ class CompanyController extends PublicController{
     }
 
     /*
-    * 类别企业
+    * 类别企业/搜索
     * @time:2020/04/07
     * @author:Lhp
     */
-    public function actionStrictCompany(){
-        if(self::is_ajax()){
+    public function actionCompanySearch(){
             $json = $this->get_json();
-            $strict_id =$this->verifyEmpty($json,'strict_id');//严选类别id
-            $where['strict_id']=$strict_id;
-            $where['check']=2;
+            $strict_id =$this->verifyEmpty($json,'type_id');//严选类别id
+            $search_key =$this->verifyEmpty($json,'search_key');//搜索关键字
+            $pagination = $json['pagination'];
+            $params['page'] = $pagination['page'];
+            $params['page_size'] = $pagination['page_size'];
+            $params['type_id']=$strict_id;
+            $params['search_key']=$search_key;
             $type=new CompanyModel();
-            $data=$type->getCompanysDetail($where);
+            $data=$type->getCompanysSearch($params);
             return $this->result($data,'200','成功');
-        }else{
-            return $this->result([],'-1','请求失败！');
-        }
     }
 }

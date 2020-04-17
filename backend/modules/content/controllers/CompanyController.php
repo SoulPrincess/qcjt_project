@@ -166,4 +166,22 @@ class CompanyController extends Controller{
             throw new NotFoundHttpException('请求的页面不存在!');
         }
     }
+    /*
+         * 企业信息更新
+         * @author：lhp
+         * @time：2020/3/24
+         * */
+    public function actionStatus($id)
+    {
+        $model = $this->findModel($id);
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Helper::invalidate();
+            return $this->redirect(['view', 'id' => $model->id]);
+        } else {
+            return $this->render('status', [
+                'model' => $model,
+            ]);
+        }
+    }
+
 }

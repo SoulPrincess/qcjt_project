@@ -32,8 +32,8 @@ class Company extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['company_name','company_describe','pro_describe','type_id','company_allname'], 'required'],
-            [['company_pdf','linkman','phone','post','company_logo','service_charge','strict_id'], 'safe'],
+            [['company_name','company_describe','pro_describe','company_allname'], 'required'],
+            [['company_pdf','linkman','phone','post','company_logo','service_charge','strict_id','reason','type_id','strict_state','state','check','reason'], 'safe'],
         ];
     }
 
@@ -57,13 +57,15 @@ class Company extends \yii\db\ActiveRecord
             'state' => '审核',
             'service_charge'=>'服务费',
             'company_pdf'=>'pdf文件',
-            'check'=>'自营'
+            'check'=>'自营',
+            'strict_state'=>'严选',
+            'reason'=>'原因'
         ];
     }
 
     /**
-     * @return \yii\db\ActiveQuery
-     */
+ * @return \yii\db\ActiveQuery
+ */
     public function getCompanyType()
     {
         return $this->hasOne(CompanyType::className(), ['id' => 'type_id']);

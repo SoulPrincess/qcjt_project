@@ -158,7 +158,7 @@ layui.config({
         return false;
     });
 //  关闭严选操作
-    $("body").on("click",".layui-default-active",function(){
+    $("body").on("click",".layui-default-delete",function(){
         var href = $(this).attr("href");
         console.log(href);
         layer.confirm('确定取消审核吗？',{icon:3, title:'提示信息'},function(index){
@@ -180,6 +180,28 @@ layui.config({
                     layer.msg('系统错误');
                 }
             });
+        });
+        return false;
+    });
+
+    $("body").on("click",".layui-default-status",function(){  //修改
+        var href = $(this).attr("href");
+        var index = layui.layer.open({
+            title : "修改状态",
+            type : 2,
+            area: ['70%', '90%'], //宽高
+            //area: ['300', '60%'], //宽高
+            content : [href],
+            success : function(layero, index){
+                setTimeout(function(){
+                    layui.layer.tips('点击此处返回', '.layui-layer-setwin .layui-layer-close', {
+                        tips: 3
+                    });
+                },500);
+            },
+            end: function () {
+                location.reload();
+            }
         });
         return false;
     });

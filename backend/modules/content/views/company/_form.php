@@ -15,9 +15,7 @@ $this->registerJs($this->render('js/upload.js'));
 
     <?= $form->field($model, 'company_allname')->textInput(['maxlength' => true,'class'=>'layui-input']) ?>
 
-    <?= $form->field($model, 'type_id')->dropDownList(CompanyType::dropDown()) ?>
-
-    <?= $form->field($model, 'strict_id')->dropDownList(StrictType::dropDown())->label('严选类型') ?>
+    <?= $form->field($model, 'type_id')->dropDownList(CompanyType::dropDown(),['prompt'=>'请选择']) ?>
 
     <?= $form->field($model, 'pro_describe')->textInput(['maxlength' => true,'class'=>'layui-input']) ?>
 

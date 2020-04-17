@@ -15,7 +15,7 @@ $this->registerJs($this->render('js/index.js'));
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
 		'options' => ['class' => 'grid-view','style'=>'overflow:auto', 'id' => 'grid'],
-		'tableOptions'=> ['class'=>'layui-table'],
+		'tableOptions'=> ['class'=>'table table-bordered layui-table'],
 		'pager' => [
 			'options'=>['class'=>'layuipage pull-right'],
 				'prevPageLabel' => '上一页',
@@ -32,18 +32,14 @@ $this->registerJs($this->render('js/index.js'));
                 'contentOptions' => ['style'=> 'text-align: center;']
             ],
             'company_name',
-            [
-                'attribute' => 'company_allname',
-                'contentOptions' => ['style'=> 'text-align: center;'],
-                'headerOptions' => ['width'=>'80','style'=> 'text-align: center;'],
-            ],
-            //'company_allname',
+            'company_allname',
             'companyType.type_name',
-            'strictType.name',
+            //'strictType.name',
             [
                 'attribute' => 'company_logo',
                 'contentOptions' => ['style'=> 'text-align: center;'],
                 'headerOptions' => ['width'=>'110','style'=> 'text-align: center;'],
+                'enableSorting' => false,//禁止排序
                 "format"=>[
                     "image",
                     [
@@ -52,10 +48,10 @@ $this->registerJs($this->render('js/index.js'));
                     ],
                 ],
             ],
-            'service_charge',
             [
                 'attribute' => 'company_pdf',
                 'format' => 'raw',
+                'enableSorting' => false,//禁止排序
                 'value' => function($model) {
                     $url=$model->company_pdf;
                     if($url!=''){
@@ -70,13 +66,15 @@ $this->registerJs($this->render('js/index.js'));
                     'style'=> 'text-align: center;'
                 ],
             ],
+            'service_charge',
             'linkman',
             'phone',
             [
                 'attribute' => 'state',
                 'format' => 'html',
                 'value' => function($model) {
-                    return $model->state==2?'<font color="red">待审核</font>':'<font color="green">已审核</font>';
+                    return $model->state==2?'<font color="gray">待审核</font>':
+                        ($model->state==3?'<font color="red">不通过</font>':'<font color="green">已审核</font>');
                 },
                 'contentOptions' => ['style'=> 'text-align: center;'],
                 'headerOptions' => [
@@ -84,6 +82,18 @@ $this->registerJs($this->render('js/index.js'));
                     'style'=> 'text-align: center;'
                 ],
                 'label' => '审核',
+            ],[
+                'attribute' => 'strict_state',
+                'format' => 'html',
+                'value' => function($model) {
+                    return $model->strict_state==2?'<font color="red">否</font>':'<font color="green">是</font>';
+                },
+                'contentOptions' => ['style'=> 'text-align: center;'],
+                'headerOptions' => [
+                    'width' => '10%',
+                    'style'=> 'text-align: center;'
+                ],
+                'label' => '严选',
             ],
             [
                 'attribute' => 'check',
@@ -97,6 +107,8 @@ $this->registerJs($this->render('js/index.js'));
                     'style'=> 'text-align: center;'
                 ],
             ],
+            'reason',
+
             [
 				'header' => '操作',
 				'class' => 'yii\grid\ActionColumn',
@@ -105,7 +117,7 @@ $this->registerJs($this->render('js/index.js'));
 					'width' => '10%',
 					'style'=> 'text-align: center;'
 				],
-				'template' =>'{view} {update}{activate} {delete}',
+				'template' =>'{view} {update}{activate} {status}{delete}',
 				'buttons' => [
                     'view' => function ($url, $model, $key){
 						return Html::a('查看', Url::to(['view','id'=>$model->id]), ['class' => "layui-btn layui-btn-xs layui-default-view"]);
@@ -113,16 +125,22 @@ $this->registerJs($this->render('js/index.js'));
                     'update' => function ($url, $model, $key) {
 						return Html::a('修改', Url::to(['update','id'=>$model->id]), ['class' => "layui-btn layui-btn-normal layui-btn-xs layui-default-update"]);
                     },
-                    'activate' => function ($url, $model, $key) {
-                        if($model->state==2){
-                            return Html::a('已审核', Url::to(['active','id'=>$model->id]), ['class' => "layui-btn layui-btn-xs layui-btn-normal layui-default-active"]);
-                        }else{
-                            return Html::a('待审核', Url::to(['active','id'=>$model->id]), ['class' => "layui-btn layui-btn-xs layui-btn-warm layui-default-inactive"]);
-                        }
-                    },
-					'delete' => function ($url, $model, $key) {
+                    'status' => function ($url, $model, $key) {
+						return Html::a('操作', Url::to(['status','id'=>$model->id]), ['class' => "layui-btn layui-btn-warm layui-btn-xs layui-default-status"]);
+					},
+//                    'activate' => function ($url, $model, $key) {
+//                        if($model->state==2){
+//                            return Html::a('已审核', Url::to(['active','id'=>$model->id]), ['class' => "layui-btn layui-btn-xs layui-btn-normal layui-default-active"]);
+//                        }else{
+//                            return Html::a('待审核', Url::to(['active','id'=>$model->id]), ['class' => "layui-btn layui-btn-xs layui-btn-warm layui-default-inactive"]);
+//                        }
+//                    },
+                    'delete' => function ($url, $model, $key) {
 						return Html::a('删除', Url::to(['delete','id'=>$model->id]), ['class' => "layui-btn layui-btn-danger layui-btn-xs layui-default-delete"]);
-					}
+						},
+//					'status' => function ($url, $model, $key) {
+//						return Html::a('操作', Url::to(['status','id'=>$model->id]), ['class' => "layui-btn layui-btn-warm layui-btn-xs layui-default-status"]);
+//					}
 				]
 			],
         ],

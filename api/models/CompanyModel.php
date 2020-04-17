@@ -1,15 +1,13 @@
 <?php
 namespace api\models;
-use api\models\PublicModel;
-use yii\base\Model;
 use yii\db\Query;
-use yii\db\connection;
 use yii;
-use yii\behaviors\TimestampBehavior;
+use yii\data\Pagination;
+use yii\helpers\ArrayHelper;
 
 /**
  * Created by PhpStorm.
- * User: EDZ
+ * User: LHP
  * Date: 2020/3/26
  * Time: 11:17
  */
@@ -20,14 +18,14 @@ class CompanyModel extends PublicModel {
     * @author:lhp
     * @time:2020-3-26
     * */
-    public function getCompanyDetail(){
-        $config_data=(new Query())
-            ->select(['c.id','company_name','company_allname','company_logo','pro_describe','company_describe','linkman','phone','post','service_charge','t.type_name','t.id type_id','c.check','s.name strict_name'])
+    public function getCompanyDetail($where=[]){
+        $query=new Query();
+        $query->select(['c.id','company_name','company_allname','company_logo','pro_describe','company_describe','linkman','phone','post','service_charge','t.type_name','t.id type_id','c.check'])
             ->from(['c'=>$this->COMPANY_TABLE])
             ->leftJoin(['t'=>$this->COMPANY_TYPE_TABLE],'t.id=c.type_id')
-            ->leftJoin(['s'=>$this->STRICT_TABLE],'s.id=c.strict_id')
-            ->where(['c.state'=>'1'])
-            ->all();
+            ->where(['c.state'=>'1','c.check'=>1]);
+
+        $config_data=$query->all();
         return $config_data;
     }
 
@@ -38,12 +36,11 @@ class CompanyModel extends PublicModel {
   * @time:2020-3-26
   * */
     public function getCompanyOneDetail($where=[]){
-
         $query=new Query();
-        $query->select(['c.id','company_name','company_allname','company_logo','pro_describe','company_describe','linkman','phone','post','service_charge','t.type_name','t.id type_id','s.name strict_name','c.company_pdf'])
+
+        $query->select(['c.id','company_name','company_allname','company_logo','pro_describe','company_describe','linkman','phone','post','service_charge','t.type_name','t.id type_id','c.company_pdf'])
             ->from(['c'=>$this->COMPANY_TABLE])
             ->leftJoin(['t'=>$this->COMPANY_TYPE_TABLE],'t.id=c.type_id')
-            ->leftJoin(['s'=>$this->STRICT_TABLE],'s.id=c.strict_id')
             ->where(['c.state'=>'1']);
         if($where){
             $query->andWhere($where);
@@ -84,24 +81,93 @@ class CompanyModel extends PublicModel {
     }
 
     /*
-* 企业详情信息
-* $where array
-* @author:lhp
-* @time:2020-3-26
-* */
-    public function getCompanysDetail($where=[]){
+    * 企业详情信息
+    * $where array
+    * @author:lhp
+    * @time:2020-4-9
+    * */
+    public function getCompanysSearch($params=[]){
 
-        $query=new Query();
-        $query->select(['c.id','company_name','company_allname','company_logo','pro_describe','company_describe','linkman','phone','post','service_charge','t.type_name','t.id type_id','s.name strict_name','c.company_pdf'])
+        $query = new Query();
+        if (!empty($params['page'])) {
+            $this->defaultPage = $params['page'];
+        }
+        if (!empty($params['page_size'])) {
+            $this->defaultPageSize = $params['page_size'];
+        }
+        $params['order_by'] = 'c.created_at asc';
+        $offset = ($this->defaultPage - 1) * $this->defaultPageSize;
+        $query->select(['c.id','company_name','company_allname','company_logo','pro_describe','company_describe','linkman','phone','post','service_charge','t.type_name','c.type_id','c.company_pdf'])
             ->from(['c'=>$this->COMPANY_TABLE])
             ->leftJoin(['t'=>$this->COMPANY_TYPE_TABLE],'t.id=c.type_id')
-            ->leftJoin(['s'=>$this->STRICT_TABLE],'s.id=c.strict_id')
-            ->where(['c.state'=>'1']);
-        if($where){
-            $query->andWhere($where);
+            ->where(['c.state'=>1,'c.check'=>2]);
+        if (!empty($params['search_key'])) {
+            $query->andWhere(['or',
+                ['like', 'c.company_name', $params['search_key']],
+                ['like', 'c.company_allname', $params['search_key']]
+            ]);
         }
-        $config_data=$query->all();
+        //按条件搜索
+        if (!empty($params['type_id'])){
+            $query->andWhere(['c.type_id'=>$params['type_id']]);
+        }
+        if (!empty($params['strict_state'])){
+            $query->andWhere(['c.strict_state'=>$params['strict_state']]);
+        }
+        $countQuery = clone $query;
+        $result = $query
+            ->offset($offset)
+            ->limit($this->defaultPageSize)
+            ->orderBy($params['order_by'])
+            ->groupBy(['c.type_id'])
+            ->all();
+        //总数
+        $count = intval($countQuery->count());
+        $pages = new Pagination(['totalCount' => $count, 'pageSize' => $this->defaultPageSize]);
+        $page_count = $pages->getPageCount();
+        $page_size = $pages->getPageSize();
+        $pagination = ['page' => $this->defaultPage, 'page_count' => $page_count, 'page_size' => $page_size, 'count' => $count];
+        return ['data' => $result, 'pagination' => $pagination];
+    }
+    /*
+    *企业首页数据
+    *@author:lhp
+    *@time:2020/04/09
+    */
+    public function getCompanysDetail()
+    {
+        $query=new Query();
 
-        return $config_data;
+        $data=$query->select(['id','type_name'])
+            ->from(['s'=>$this->COMPANY_TYPE_TABLE])
+            ->orderBy('s.sort asc')
+            ->all();
+
+        $query1=new Query();
+        $query1->select(['c.id','company_name','company_allname','company_logo','pro_describe','company_describe','service_charge','c.type_id'])
+            ->from(['c'=>$this->COMPANY_TABLE])
+            ->where(['c.check'=>2,'c.state'=>1,'c.strict_state'=>1]);
+
+        $company=$query1->orderBy('c.created_at asc,c.strict_state asc')
+            ->all();
+
+        $data_list = ArrayHelper::map($data, 'id', 'type_name');
+        if(!empty($company)){
+            foreach($company as $k=>$v){
+                if($data_list[$v['type_id']]){
+                    $datas[$v['type_id']]['type_name']=$data_list[$v['type_id']];
+                    $datas[$v['type_id']]['type_id']=$v['type_id'];
+                    $datas[$v['type_id']]['child'][]=$v;
+                }
+            }
+        }else{
+            foreach($data_list as $k=>$v){
+                $datas[$k]['type_name']=$v;
+                $datas[$k]['type_id']=$k;
+                $datas[$k]['child'][]=[];
+            }
+        }
+        $datas= array_values($datas);
+        return $datas;
     }
 }

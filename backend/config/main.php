@@ -26,13 +26,20 @@ return [
         ],
         "content"=>[
             'class'=>'content\Module'
+        ],
+        'official' => [
+            'class' => 'official\Module'
+        ],
+        'gridview' => [
+            'class' => '\kartik\grid\Module'
         ]
     ],
-    "aliases" => [    
+    "aliases" => [
         '@rbac' => '@backend/modules/rbac',
 		'@system' => '@backend/modules/system',
 		'@backup' => '@backend/modules/backup',
 		'@content' => '@backend/modules/content',
+		'@official' => '@backend/modules/official',
     ],
     'components' => [
         'request' => [
