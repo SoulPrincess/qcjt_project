@@ -33,7 +33,8 @@ class Company extends \yii\db\ActiveRecord
     {
         return [
             [['company_name','company_describe','pro_describe','company_allname'], 'required'],
-            [['company_pdf','linkman','phone','post','company_logo','service_charge','strict_id','reason','type_id','strict_state','state','check','reason'], 'safe'],
+            [['company_pdf','linkman','phone','post','company_logo','service_charge','strict_id','reason','type_id','strict_state','state','check','reason','company_url'], 'safe'],
+            ['sort','integer']
         ];
     }
 
@@ -59,7 +60,9 @@ class Company extends \yii\db\ActiveRecord
             'company_pdf'=>'pdf文件',
             'check'=>'自营',
             'strict_state'=>'严选',
-            'reason'=>'原因'
+            'reason'=>'原因',
+            'company_url'=>'官网地址',
+            'sort'=>'排序',
         ];
     }
 

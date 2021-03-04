@@ -30,7 +30,8 @@ class Bill extends BasicWePay
      * @param array $options 静音参数
      * @param null|string $outType 输出类型
      * @return bool|string
-     * @throws \WeChat\Exceptions\InvalidResponseException
+     * @throws InvalidResponseException
+     * @throws \WeChat\Exceptions\LocalCacheException
      */
     public function download(array $options, $outType = null)
     {
@@ -38,7 +39,7 @@ class Bill extends BasicWePay
         $params = $this->params->merge($options);
         $params['sign'] = $this->getPaySign($params, 'MD5');
         $result = Tools::post('https://api.mch.weixin.qq.com/pay/downloadbill', Tools::arr2xml($params));
-        if (($jsonData = Tools::xml2arr($result))) {
+        if (is_array($jsonData = Tools::xml3arr($result))) {
             if ($jsonData['return_code'] !== 'SUCCESS') {
                 throw new InvalidResponseException($jsonData['return_msg'], '0');
             }

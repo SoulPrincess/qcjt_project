@@ -11,7 +11,7 @@ layui.config({
             title : "添加菜单",
             type : 2,
             area: ['400px', '500px'],
-            content : ["<?= yii\helpers\Url::to(['create']); ?>",'no'],
+            content : ["<?= yii\helpers\Url::to(['create']); ?>"],
             end: function () {
                 location.reload();
             }
@@ -79,7 +79,7 @@ layui.config({
         var index = layui.layer.open({
             title : "查看菜单",
             type: 2,
-            area: ['400px', '250px'], //宽高
+            area: ['80%', '80%'], //宽高
             content : [href, 'no'],
         });	
         return false;
@@ -91,8 +91,8 @@ layui.config({
         var index = layui.layer.open({
             title : "修改菜单",
             type : 2,
-            area: ['400px', '500px'],
-            content : [href,"no"],
+            area: ['80%', '80%'],
+            content : [href],
             success : function(layero, index){
                 setTimeout(function(){
                     layui.layer.tips('点击此处返回', '.layui-layer-setwin .layui-layer-close', {
@@ -131,4 +131,36 @@ layui.config({
 		});
         return false;
 	});
+
+    $("body").on("click",".layui-default-status",function(){
+        var is_status =$(this).parent().parent().find('#status_2').text();
+        var status;
+        if(is_status=='是'){
+            status=2;
+        }else{
+            status=1;
+        }
+        var href = $(this).attr("href");
+        layer.confirm('确定修改显示状态吗？',{icon:3, title:'提示信息'},function(index){
+            $.post(href,{"status":status},function(data){
+                if(data.code==200){
+                    layer.msg(data.msg);
+                    layer.close(index);
+                    setTimeout(function(){
+                        location.reload();
+                    },500);
+                }else{
+                    layer.close(index);
+                    layer.msg(data.msg);
+                }
+            },"json").fail(function(a,b,c){
+                if(a.status==403){
+                    layer.msg('没有权限');
+                }else{
+                    layer.msg('系统错误');
+                }
+            });
+        });
+        return false;
+    });
 });

@@ -19,7 +19,7 @@ class Company extends CompanyModel
     public function rules()
     {
         return [
-            [['company_name','company_allname'], 'safe'],
+            [['company_name','company_allname','strict_state','state','type_id'], 'safe'],
         ];
     }
 
@@ -65,13 +65,23 @@ class Company extends CompanyModel
             'desc' => ['t.check' => SORT_DESC],
             'label' => 'check',
         ];
-        $sort->defaultOrder = ['t.state' => SORT_ASC];
+        $sort->attributes['t.updated_at'] = [
+            'asc' => ['t.updated_at' => SORT_ASC],
+            'desc' => ['t.updated_at' => SORT_DESC],
+            'label' => 'updated_at',
+        ];
+        $sort->defaultOrder = ['t.updated_at' => SORT_DESC];
         if (!($this->load($params) && $this->validate())) {
             return $dataProvider;
         }
         $query->andFilterWhere([
             't.id' => $this->id,
         ]);
+        $query->andFilterWhere(['t.state'=>$this->state]);
+        $query->andFilterWhere(['t.type_id'=>$this->type_id]);
+
+        $query->andFilterWhere(['t.strict_state'=>$this->strict_state]);
+
         $query->andFilterWhere(['like', 't.company_name', $this->company_name]);
 
         $query->andFilterWhere(['like', 't.company_allname', $this->company_allname]);

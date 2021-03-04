@@ -224,10 +224,11 @@ class PublicController extends Controller{
         if(!in_array($type, $allow_type)){
             die("只允许上传pdf文件！");
         }
-        $file_save_name =  $file_name;
-        $file_save_name=iconv("UTF-8","gb2312", $file_save_name);
+        $file_save_name = date("YmdHis",time()) . mt_rand(1000, 9999) . '.' . $type;
+//        $file_save_name =  $file_name;
+//        $file_save_name=iconv("UTF-8","gb2312", $file_save_name);
         move_uploaded_file($file_tmp_path, $dir.'/'.$file_save_name);
-        $file_save_name=iconv("gb2312","UTF-8", $file_save_name);
+      //  $file_save_name=iconv("gb2312","UTF-8", $file_save_name);
         $arr=[
             "code"=>"200",
             "data"=>strip_tags(Config::findOne(['name'=>'WEB_SITE_RESOURCES_URL'])->value) .'uploads/PDF/'.$file_save_name,

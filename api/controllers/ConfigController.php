@@ -9,6 +9,7 @@ namespace api\controllers;
 
 use api\models\ConfigModel;
 use api\models\CompanyType;
+use yii;
 
 class ConfigController extends PublicController {
 
@@ -22,6 +23,7 @@ class ConfigController extends PublicController {
     public function actionIndex(){
         $configmodel= new ConfigModel();
         $data= $configmodel->getConfigData();
+        print_r($data);die;
         return $this->result($data,'200','成功');
     }
 

@@ -15,7 +15,7 @@ class GuanGoodsController extends PublicController{
    */
     public function actionTypeList(){
         $type=new GuanGoodsModel();
-        $data=$type->getTypeList();
+        $data=$type->getTypeList();print_r($data);die;
         return $this->result($data,'200','成功');
     }
     public function actionTypeList1(){
@@ -29,8 +29,9 @@ class GuanGoodsController extends PublicController{
    * @author:Lhp
   */
     public function actionGoodsList(){
+        $flag =1;
         $type=new GuanGoodsModel();
-        $data=$type->getGuanGoodsDetail();
+        $data=$type->getGuanGoodsDetail($flag);
         return $this->result($data,'200','成功');
     }
 
@@ -42,9 +43,11 @@ class GuanGoodsController extends PublicController{
     public function actionGoodsDetail(){
 
         $goodsmodel= new GuanGoodsModel();
-        $id =$_GET['id'];
+        $request = \Yii::$app->request;
+        $id =$request->get('id',1);
+//        $id=1;
         if($id){
-            $data= $goodsmodel->getGoodsOneDetail(['g.id'=>$id]);
+            $data= $goodsmodel->getGoodsOneDetail(['g.id'=>$id]);print_r($data);die;
             return $this->result($data,'200','成功');
         }else{
             return $this->result([],'201','参数不能为空');

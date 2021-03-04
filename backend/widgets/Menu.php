@@ -93,7 +93,6 @@ class Menu extends \yii\widgets\Menu
 				'{url}' => isset($item['url'][0]) ? 'javascript:;' . '" data-url="'.Url::to($item["url"]).'"' : 'javascript:void(0);',
 			];
 		}
-        
 
         $template = ArrayHelper::getValue($item, 'template', isset($item['url']) ? $linkTemplate : $labelTemplate);
         return strtr($template, $replacements);

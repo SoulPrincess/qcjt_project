@@ -20,7 +20,7 @@ class CompanyModel extends PublicModel {
     * */
     public function getCompanyDetail($where=[]){
         $query=new Query();
-        $query->select(['c.id','company_name','company_allname','company_logo','pro_describe','company_describe','linkman','phone','post','service_charge','t.type_name','t.id type_id','c.check'])
+        $query->select(['c.id','company_name','company_allname','company_logo','pro_describe','company_describe','linkman','phone','post','service_charge','t.type_name','t.id type_id','c.check','c.company_url'])
             ->from(['c'=>$this->COMPANY_TABLE])
             ->leftJoin(['t'=>$this->COMPANY_TYPE_TABLE],'t.id=c.type_id')
             ->where(['c.state'=>'1','c.check'=>1]);
@@ -37,7 +37,6 @@ class CompanyModel extends PublicModel {
   * */
     public function getCompanyOneDetail($where=[]){
         $query=new Query();
-
         $query->select(['c.id','company_name','company_allname','company_logo','pro_describe','company_describe','linkman','phone','post','service_charge','t.type_name','t.id type_id','c.company_pdf'])
             ->from(['c'=>$this->COMPANY_TABLE])
             ->leftJoin(['t'=>$this->COMPANY_TYPE_TABLE],'t.id=c.type_id')
@@ -119,7 +118,7 @@ class CompanyModel extends PublicModel {
             ->offset($offset)
             ->limit($this->defaultPageSize)
             ->orderBy($params['order_by'])
-            ->groupBy(['c.type_id'])
+//            ->groupBy(['c.type_id'])
             ->all();
         //总数
         $count = intval($countQuery->count());
@@ -148,7 +147,7 @@ class CompanyModel extends PublicModel {
             ->from(['c'=>$this->COMPANY_TABLE])
             ->where(['c.check'=>2,'c.state'=>1,'c.strict_state'=>1]);
 
-        $company=$query1->orderBy('c.created_at asc,c.strict_state asc')
+        $company=$query1->orderBy('c.sort desc,c.strict_state asc')
             ->all();
 
         $data_list = ArrayHelper::map($data, 'id', 'type_name');

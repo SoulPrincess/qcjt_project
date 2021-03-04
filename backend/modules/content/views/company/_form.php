@@ -15,6 +15,8 @@ $this->registerJs($this->render('js/upload.js'));
 
     <?= $form->field($model, 'company_allname')->textInput(['maxlength' => true,'class'=>'layui-input']) ?>
 
+    <?= $form->field($model, 'company_url')->textInput(['maxlength' => true,'class'=>'layui-input']) ?>
+
     <?= $form->field($model, 'type_id')->dropDownList(CompanyType::dropDown(),['prompt'=>'请选择']) ?>
 
     <?= $form->field($model, 'pro_describe')->textInput(['maxlength' => true,'class'=>'layui-input']) ?>
@@ -35,6 +37,7 @@ $this->registerJs($this->render('js/upload.js'));
 
     <?= $form->field($model, 'company_pdf',['template' => '{label} <div class="row"><div class="col-sm-12">{input}<button type="button" class="layui-btn upload_button" id="test6"><i class="layui-icon"></i>上传pdf文件</button>{error}{hint}</div></div>'])->textInput(['maxlength' => true,'class'=>'layui-input upload_input']) ?>
 
+    <?= $form->field($model, 'sort')->input('number',['class'=>'layui-input']) ?>
     <div align='right' style="margin-top:10px;">
         <?=
         Html::submitButton($model->isNewRecord ? '新增' : '更新', ['class' => $model->isNewRecord? 'layui-btn' : 'layui-btn layui-btn-normal'])

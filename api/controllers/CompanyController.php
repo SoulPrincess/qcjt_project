@@ -10,6 +10,14 @@ header('Access-Control-Allow-Headers:x-requested-with,content-type');
 use yii;
 use api\models\CompanyModel;
 class CompanyController extends PublicController{
+    public function behaviors()
+    {
+        return [
+            'limit' => [//接口限制过滤器
+                'class' => 'api\filters\LimitFilter',
+            ],
+        ];
+    }
     /*
     * 严选企业信息
     * @time:2020-3-26
@@ -59,6 +67,7 @@ class CompanyController extends PublicController{
         if($this->is_post()){
             $data['company_name'] =$this->verifyEmpty($json,'company_name');//企业简称
             $data['company_allname'] =$this->verifyEmpty($json,'company_allname');//企业全称
+            $data['company_url'] =$this->verifyEmpty($json,'company_url');//企业url
             $data['company_describe'] =$this->verifyEmpty($json,'company_describe');//企业简介
             $data['company_logo'] =$this->verifyEmpty($json,'company_logo');//企业logo
             $data['pro_describe'] =$this->verifyEmpty($json,'pro_describe');//具体产品

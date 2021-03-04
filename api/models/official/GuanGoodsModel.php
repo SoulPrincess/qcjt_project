@@ -21,9 +21,10 @@ class GuanGoodsModel extends PublicModel {
     * */
     public function getTypeList(){
         $query=new Query();
-        $data=$query->select(['g.id g_id','type_name','t.intro','pid','t.id'])
+        $data=$query->select(['g.id g_id','type_name','t.intro','pid','t.id','t.cover_img','t.wechat_img','t.contact','t.phone','t.hot_img'])
             ->from(['t'=>$this->GUAN_TYPE_TABLE])
             ->leftJoin(['g'=>$this->GUAN_GOODS_TABLE],'g.type_id=t.id')
+            ->where(['t.status'=>1])
             ->orderby('t.sort asc')
             ->all();
         $arr_data= $this->recursion($data,0);
@@ -32,6 +33,9 @@ class GuanGoodsModel extends PublicModel {
                 foreach($v['child'] as $k1=>$v1){
                     if($v1['g_id']==''){
                         unset($arr_data[$k]['child'][$k1]);
+                    }
+                    if(!empty($v1['hot_img'])){
+                        $arr_data[$k]['hot_img'][$v1['id']]=$v1['hot_img'];
                     }
                 }
             }
@@ -43,18 +47,20 @@ class GuanGoodsModel extends PublicModel {
     *@author:lhp
     *@time:2020/04/09
     */
-    public function getGuanGoodsDetail()
+    public function getGuanGoodsDetail($type='')
     {
         $typelist=$this->getTypeList();//类别
         $array_he=[];
         $query=new Query();
-        $query->select(['g.id g_id','t.type_name','g.intro','g.type_id','g.content','g.cost','g.cover_img'])
+        $query->select(['g.id g_id','t.type_name','g.intro','g.type_id','g.content','g.cost','t.cover_img type_img'])
             ->from(['g'=>$this->GUAN_GOODS_TABLE])
             ->leftJoin(['t'=>$this->GUAN_TYPE_TABLE],'t.id=g.type_id')
             ->where(['g.status'=>1]);
+        if($type){
+            $query->andWhere(['t.home_status'=>1]) ;
+        }
         $goods=$query->orderBy('g.created_at asc,t.sort asc')
             ->all();
-
         foreach($typelist as $k=>$v){
             if($v['type_name']=='更多'&&isset($v['child'])){
                 foreach($v['child'] as $k1=>$v1){
@@ -76,6 +82,7 @@ class GuanGoodsModel extends PublicModel {
                             $array_he[$k]['type_id']= $v['id'];
                             $array_he[$k]['type_name'] = $v['type_name'];
                             $array_he[$k]['intro'] = $v['intro'];
+                            $array_he[$k]['cover_img'] = $v['cover_img'];
                             $array_he[$k]['child'][] = $v2;
                         }
                     }
@@ -92,13 +99,18 @@ class GuanGoodsModel extends PublicModel {
     * */
     public function getGoodsOneDetail($where=[]){
         $query=new Query();
-        $query->select(['g.id','t.type_name','g.intro','g.cover_img','g.cost g_cost','g.content','g.attr_id'])
+        $query->select(['g.id','t.type_name','g.intro','g.cost g_cost','g.content','g.attr_id','t.pid','g.cover_img'])
             ->from(['g'=>'t_guan_goods'])
             ->leftJoin(['t'=>'t_guan_type'],'t.id=g.type_id');
         if($where){
             $query->andWhere($where);
         }
         $config_data=$query->one();
+//        $img=(new Query())->select(['t.cover_img'])
+//            ->from(['t'=>'t_guan_type'])
+//            ->where(['id'=>$config_data['pid']])
+//            ->one();
+//        $config_data['cover_img']=$img['cover_img'];
 
         $config_data['attr']=(new Query())->select(['a.id','a.attribute','a.cost'])
             ->from(['a'=>'t_guan_goods_attribute'])
@@ -114,7 +126,7 @@ class GuanGoodsModel extends PublicModel {
         $typelist=$this->getTypeList();//类别
         $array_he=[];
         $query=new Query();
-        $query->select(['g.id','t.type_name','g.intro','g.type_id','g.content','g.cover_img','g.cost'])
+        $query->select(['g.id','t.type_name','g.intro','g.type_id','g.content','g.cover_img','g.cost','g.wechat_img'])
             ->from(['g'=>$this->GUAN_GOODS_TABLE])
             ->leftJoin(['t'=>$this->GUAN_TYPE_TABLE],'t.id=g.type_id')
             ->where(['g.status'=>1]);
@@ -151,7 +163,7 @@ class GuanGoodsModel extends PublicModel {
 
         $query = new Query();
         $params['order_by'] = 't.sort asc';
-        $query->select(['g.id g_id','t.type_name','g.intro','g.content','g.cover_img','g.cost'])
+        $query->select(['g.id g_id','t.type_name','g.intro','g.content','g.cover_img','g.cost','g.wechat_img'])
             ->from(['g'=>$this->GUAN_GOODS_TABLE])
             ->leftJoin(['t'=>$this->GUAN_TYPE_TABLE],'t.id=g.type_id')
             ->where(['g.status'=>1]);

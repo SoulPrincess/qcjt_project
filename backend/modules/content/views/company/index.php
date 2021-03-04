@@ -33,6 +33,7 @@ $this->registerJs($this->render('js/index.js'));
             ],
             'company_name',
             'company_allname',
+            'company_url',
             'companyType.type_name',
             //'strictType.name',
             [
@@ -66,9 +67,10 @@ $this->registerJs($this->render('js/index.js'));
                     'style'=> 'text-align: center;'
                 ],
             ],
-            'service_charge',
-            'linkman',
-            'phone',
+//            'service_charge',
+//            'linkman',
+//            'phone',
+            'sort',
             [
                 'attribute' => 'state',
                 'format' => 'html',

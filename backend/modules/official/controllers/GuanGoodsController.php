@@ -8,6 +8,8 @@
 
 namespace official\controllers;
 
+use common\models\Config;
+use kucha\ueditor\UEditorAction;
 use rbac\components\Helper;
 use yii;
 use yii\filters\VerbFilter;
@@ -17,6 +19,7 @@ use official\models\searchs\GuanGoods as GuanGoodsSearch;
 
 class GuanGoodsController extends Controller
 {
+
     /**
      * @inheritdoc
      */

@@ -11,6 +11,7 @@ LayuiAsset::register($this);
         'attributes' => [
             'company_name',
             'company_allname',
+            'company_url',
             'companyType.type_name:text:类型名称',
            // 'strictType.name:text:严选类别',
             [
@@ -31,6 +32,7 @@ LayuiAsset::register($this);
             'linkman',
             'phone',
             'post',
+            'sort',
             'company_pdf',
             [
                 'attribute' => 'state',

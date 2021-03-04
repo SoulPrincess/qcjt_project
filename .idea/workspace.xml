@@ -1,0 +1,886 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="428142ef-ad43-462f-95c1-177026a3b21d" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/api/config/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/config/main.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/config/params.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/config/params.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/controllers/CompanyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/controllers/CompanyController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/controllers/ConfigController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/controllers/ConfigController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/controllers/GuanGoodsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/controllers/GuanGoodsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/controllers/PublicController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/controllers/PublicController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/filters/LimitFilter.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/filters/LimitFilter.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/models/CompanyModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/models/CompanyModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/models/PublicModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/models/PublicModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/models/official/GuanGoodsModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/models/official/GuanGoodsModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/config/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/config/main.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/ToolsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/ToolsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/modules/content/controllers/BlogrollController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/content/controllers/BlogrollController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/modules/content/controllers/CompanyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/content/controllers/CompanyController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/modules/content/models/Company.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/content/models/Company.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/modules/content/models/searchs/Company.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/content/models/searchs/Company.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/modules/content/views/company/_form.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/content/views/company/_form.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/modules/content/views/company/_search.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/content/views/company/_search.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/modules/content/views/company/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/content/views/company/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/modules/content/views/company/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/content/views/company/js/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/modules/content/views/company/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/content/views/company/view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/modules/content/views/navigation/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/content/views/navigation/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/modules/content/views/navigation/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/content/views/navigation/js/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/modules/official/controllers/GuanGoodsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/official/controllers/GuanGoodsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/modules/official/controllers/GuanTypeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/official/controllers/GuanTypeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/modules/official/models/GuanGoods.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/official/models/GuanGoods.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/modules/official/models/GuanType.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/official/models/GuanType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/modules/official/models/searchs/GuanGoods.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/official/models/searchs/GuanGoods.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/modules/official/models/searchs/GuanType.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/official/models/searchs/GuanType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/modules/official/views/guan-goods/_form.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/official/views/guan-goods/_form.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/modules/official/views/guan-goods/_search.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/official/views/guan-goods/_search.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/modules/official/views/guan-goods/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/official/views/guan-goods/js/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/modules/official/views/guan-goods/js/upload.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/official/views/guan-goods/js/upload.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/modules/official/views/guan-product/_form.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/official/views/guan-product/_form.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/modules/official/views/guan-type/_form.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/official/views/guan-type/_form.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/modules/official/views/guan-type/_search.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/official/views/guan-type/_search.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/modules/official/views/guan-type/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/official/views/guan-type/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/modules/official/views/guan-type/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/official/views/guan-type/js/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/modules/official/views/guan-type/update.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/official/views/guan-type/update.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/modules/official/views/guan-type/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/official/views/guan-type/view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/modules/rbac/controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/rbac/controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/modules/rbac/views/user/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/rbac/views/user/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/modules/system/views/config/_form.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/system/views/config/_form.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/modules/system/views/config/js/upload.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/modules/system/views/config/js/upload.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/cache/6b/6b4a6c6d3e11334936d17fcc97f42233.bin" beforeDir="false" afterPath="$PROJECT_DIR$/backend/runtime/cache/6b/6b4a6c6d3e11334936d17fcc97f42233.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/cache/ca/ca336d0d7f59ba52a701056facb8f6f4.bin" beforeDir="false" afterPath="$PROJECT_DIR$/backend/runtime/cache/ca/ca336d0d7f59ba52a701056facb8f6f4.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/cache/e9/e9f65f1160161298073ec7d770c4764a.bin" beforeDir="false" afterPath="$PROJECT_DIR$/backend/runtime/cache/e9/e9f65f1160161298073ec7d770c4764a.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/cache/f9/f90ab1de9bef54e4a8c4bd9bde61f092.bin" beforeDir="false" afterPath="$PROJECT_DIR$/backend/runtime/cache/f9/f90ab1de9bef54e4a8c4bd9bde61f092.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/runtime/logs/app.log" beforeDir="false" afterPath="$PROJECT_DIR$/backend/runtime/logs/app.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/site/nav.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/site/nav.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/web/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/backend/web/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/widgets/Menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/widgets/Menu.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/config/bootstrap.php" beforeDir="false" afterPath="$PROJECT_DIR$/common/config/bootstrap.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/config/main_local.php" beforeDir="false" afterPath="$PROJECT_DIR$/common/config/main_local.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/config/params.php" beforeDir="false" afterPath="$PROJECT_DIR$/common/config/params.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/console/config/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/console/config/main.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_files.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_files.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/AliPay/Bill.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/AliPay/Bill.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/AliPay/Pos.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/AliPay/Pos.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/AliPay/Scan.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/AliPay/Scan.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/AliPay/Transfer.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/AliPay/Transfer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/We.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/We.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/WeChat/Contracts/BasicAliPay.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/WeChat/Contracts/BasicAliPay.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/WeChat/Contracts/BasicWeChat.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/WeChat/Contracts/BasicWeChat.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/WeChat/Contracts/BasicWePay.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/WeChat/Contracts/BasicWePay.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/WeChat/Contracts/Tools.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/WeChat/Contracts/Tools.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/WeChat/Custom.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/WeChat/Custom.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/WeChat/Media.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/WeChat/Media.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/WeChat/Pay.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/WeChat/Pay.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/WeChat/Script.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/WeChat/Script.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/WeChat/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/WeChat/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/WeMini/Crypt.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/WeMini/Crypt.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/WeMini/Plugs.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/WeMini/Plugs.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/WeMini/Qrcode.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/WeMini/Qrcode.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/WeMini/crypt/wxBizDataCrypt.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/WeMini/crypt/wxBizDataCrypt.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/WePay/Bill.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/WePay/Bill.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/WePay/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/WePay/Order.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/alipay-app.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/alipay-app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/alipay-bill.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/alipay-bill.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/alipay-notify.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/alipay-notify.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/alipay-pos.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/alipay-pos.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/alipay-refund.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/alipay-refund.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/alipay-scan.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/alipay-scan.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/alipay-transfer.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/alipay-transfer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/alipay-wap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/alipay-wap.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/alipay-web.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/alipay-web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/alipay.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/alipay.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/mini-login.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/mini-login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/mini-qrc.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/mini-qrc.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/pay-download-bill.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/pay-download-bill.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/pay-order-close.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/pay-order-close.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/pay-order-create.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/pay-order-create.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/pay-order-notify.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/pay-order-notify.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/pay-order-query.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/pay-order-query.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/pay-refund-create.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/pay-refund-create.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/pay-refund-query.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/pay-refund-query.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/pay-transfers-create.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/pay-transfers-create.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/pay-transfersbank-create.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/pay-transfersbank-create.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/wechat-jssdk-sign.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/wechat-jssdk-sign.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/wechat-menu-get.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/wechat-menu-get.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/wechat-qrcode-create.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/wechat-qrcode-create.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/wechat-user-get.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/_test/wechat-user-get.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/include.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/zoujingli/wechat-developer/include.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yii" beforeDir="false" afterPath="$PROJECT_DIR$/yii" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/modules/content/views/navigation/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2088">
+              <caret line="76" column="34" selection-start-line="76" selection-start-column="34" selection-end-line="76" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/modules/content/views/navigation/js/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4582">
+              <caret line="158" column="97" selection-start-line="158" selection-start-column="97" selection-end-line="158" selection-end-column="97" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WechatController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/modules/rbac/controllers/WechatController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="290">
+              <caret line="233" column="34" lean-forward="true" selection-start-line="233" selection-start-column="34" selection-end-line="233" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PublicModel.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/api/models/PublicModel.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="123">
+              <caret line="40" column="18" lean-forward="true" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CompanyModel.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/api/models/CompanyModel.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="377">
+              <caret line="77" column="44" selection-start-line="77" selection-start-column="32" selection-end-line="77" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CompanyController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/modules/content/controllers/CompanyController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="5829">
+              <caret line="214" column="40" selection-start-line="214" selection-start-column="40" selection-end-line="214" selection-end-column="40" />
+              <folding>
+                <element signature="e#100#127#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="check.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/web/check.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="377">
+              <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="21" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SiteController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/controllers/SiteController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1624">
+              <caret line="60" column="5" selection-start-line="60" selection-start-column="5" selection-end-line="60" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ToolsController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/controllers/ToolsController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="232">
+              <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
+              <folding>
+                <element signature="e#38#68#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>忘记密码</find>
+      <find>checkLogin</find>
+      <find>http://back.qifujie.cn/content/navigation/index</find>
+      <find>callback_</find>
+      <find>token</find>
+      <find>bindServerCheck</find>
+      <find>getOpenIdOrUnionId</find>
+      <find>https://api.weixin.qq.com/cgi-bin/qrcode/create</find>
+      <find>checklogin</find>
+      <find>login_container</find>
+      <find>递归</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/backend/views/site/header.php" />
+        <option value="$PROJECT_DIR$/backend/views/layouts/main-login.php" />
+        <option value="$PROJECT_DIR$/backend/views/site/login.php" />
+        <option value="$PROJECT_DIR$/backend/modules/rbac/controllers/UserController.php" />
+        <option value="$PROJECT_DIR$/backend/modules/rbac/views/user/js/index.js" />
+        <option value="$PROJECT_DIR$/backend/modules/rbac/views/user/login.php" />
+        <option value="$PROJECT_DIR$/backend/modules/content/models/Test.php" />
+        <option value="$PROJECT_DIR$/backend/modules/content/views/navigation/index.php" />
+        <option value="$PROJECT_DIR$/backend/modules/content/controllers/CompanyController.php" />
+        <option value="$PROJECT_DIR$/backend/modules/content/views/navigation/js/index.js" />
+        <option value="$PROJECT_DIR$/backend/web/check.php" />
+        <option value="$PROJECT_DIR$/backend/controllers/ToolsController.php" />
+        <option value="$PROJECT_DIR$/backend/modules/rbac/controllers/WechatController.php" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths>
+      <path value="$PROJECT_DIR$/backend/web/assets/28f04079/package.json" />
+      <path value="$PROJECT_DIR$/backend/web/assets/9399a6d5/package.json" />
+      <path value="$PROJECT_DIR$/backend/web/assets/c4a16259/package.json" />
+    </packageJsonPaths>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration">
+    <include_path>
+      <path value="$PROJECT_DIR$/vendor/bower/jquery-treegrid" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-token-stream" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-text-template" />
+      <path value="$PROJECT_DIR$/vendor/bower/typeahead.js" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-code-coverage" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/phpunit-mock-objects" />
+      <path value="$PROJECT_DIR$/vendor/cebe/markdown" />
+      <path value="$PROJECT_DIR$/vendor/bower/yii2-pjax" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/phpunit" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/bootstrap-popover-x" />
+      <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/symfony/console" />
+      <path value="$PROJECT_DIR$/vendor/symfony/debug" />
+      <path value="$PROJECT_DIR$/vendor/symfony/css-selector" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher" />
+      <path value="$PROJECT_DIR$/vendor/symfony/browser-kit" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/vendor/symfony/finder" />
+      <path value="$PROJECT_DIR$/vendor/symfony/dom-crawler" />
+      <path value="$PROJECT_DIR$/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/vendor/symfony/yaml" />
+      <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-bootstrap" />
+      <path value="$PROJECT_DIR$/vendor/yiisoft/yii2" />
+      <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-composer" />
+      <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-faker" />
+      <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-gii" />
+      <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-debug" />
+      <path value="$PROJECT_DIR$/vendor/leandrogehlen/yii2-treegrid" />
+      <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-swiftmailer" />
+      <path value="$PROJECT_DIR$/vendor/jtcczu/yii2-applet" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/comparator" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/global-state" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/exporter" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/type-resolver" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/environment" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-docblock" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/object-enumerator" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/recursion-context" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-common" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/code-unit-reverse-lookup" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/resource-operations" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/version" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/diff" />
+      <path value="$PROJECT_DIR$/vendor/myclabs/deep-copy" />
+      <path value="$PROJECT_DIR$/vendor/behat/gherkin" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/vendor/ezyang/htmlpurifier" />
+      <path value="$PROJECT_DIR$/vendor/kucha/ueditor" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-activeform" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-editable" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-bootstrap4-dropdown" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-grid" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-popover-x" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-dialog" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base" />
+      <path value="$PROJECT_DIR$/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/vendor/fzaninotto/faker" />
+      <path value="$PROJECT_DIR$/vendor/codeception/phpunit-wrapper" />
+      <path value="$PROJECT_DIR$/vendor/bower-asset/bootstrap" />
+      <path value="$PROJECT_DIR$/vendor/codeception/verify" />
+      <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
+      <path value="$PROJECT_DIR$/vendor/bower-asset/inputmask" />
+      <path value="$PROJECT_DIR$/vendor/codeception/stub" />
+      <path value="$PROJECT_DIR$/vendor/bower/jquery" />
+      <path value="$PROJECT_DIR$/vendor/bower/punycode" />
+      <path value="$PROJECT_DIR$/vendor/bower-asset/jquery-treegrid" />
+      <path value="$PROJECT_DIR$/vendor/codeception/base" />
+      <path value="$PROJECT_DIR$/vendor/bower/inputmask" />
+      <path value="$PROJECT_DIR$/vendor/bower-asset/jquery" />
+      <path value="$PROJECT_DIR$/vendor/phpspec/php-diff" />
+      <path value="$PROJECT_DIR$/vendor/bower-asset/punycode" />
+      <path value="$PROJECT_DIR$/vendor/zoujingli/wechat-developer" />
+      <path value="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer" />
+      <path value="$PROJECT_DIR$/vendor/phpspec/prophecy" />
+      <path value="$PROJECT_DIR$/vendor/bower-asset/typeahead.js" />
+      <path value="$PROJECT_DIR$/vendor/bower-asset/yii2-pjax" />
+      <path value="$PROJECT_DIR$/vendor/bower/bootstrap" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-timer" />
+      <path value="$PROJECT_DIR$/vendor/phpoffice/phpexcel" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-file-iterator" />
+    </include_path>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="qcjt_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qcjt_project" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qcjt_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qcjt_project" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qcjt_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qcjt_project" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qcjt_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qcjt_project" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qcjt_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qcjt_project" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qcjt_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qcjt_project" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qcjt_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qcjt_project" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="content" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qcjt_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qcjt_project" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="content" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qcjt_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qcjt_project" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="rbac" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qcjt_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qcjt_project" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="rbac" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qcjt_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qcjt_project" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="428142ef-ad43-462f-95c1-177026a3b21d" name="Default" comment="" />
+      <created>1606629366821</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1606629366821</updated>
+      <workItem from="1606629369740" duration="1527000" />
+      <workItem from="1606631042359" duration="15135000" />
+      <workItem from="1606741507959" duration="3732000" />
+      <workItem from="1606823014257" duration="1446000" />
+      <workItem from="1614493835480" duration="2470000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="24310000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18835099" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/backend/modules/content/views/navigation/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2088">
+          <caret line="76" column="34" selection-start-line="76" selection-start-column="34" selection-end-line="76" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/modules/content/views/navigation/js/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4582">
+          <caret line="158" column="97" selection-start-line="158" selection-start-column="97" selection-end-line="158" selection-end-column="97" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/modules/content/controllers/CompanyController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5829">
+          <caret line="214" column="40" selection-start-line="214" selection-start-column="40" selection-end-line="214" selection-end-column="40" />
+          <folding>
+            <element signature="e#100#127#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/web/check.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="21" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/controllers/SiteController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1624">
+          <caret line="60" column="5" selection-start-line="60" selection-start-column="5" selection-end-line="60" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/controllers/ToolsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
+          <folding>
+            <element signature="e#38#68#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/modules/rbac/controllers/WechatController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6496">
+          <caret line="224" column="5" selection-start-line="224" selection-start-column="5" selection-end-line="224" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/modules/content/views/navigation/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2204">
+          <caret line="76" column="34" lean-forward="true" selection-start-line="76" selection-start-column="34" selection-end-line="76" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/modules/content/views/navigation/js/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4582">
+          <caret line="158" column="97" selection-start-line="158" selection-start-column="97" selection-end-line="158" selection-end-column="97" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/modules/content/controllers/CompanyController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6206">
+          <caret line="214" column="40" lean-forward="true" selection-start-line="214" selection-start-column="40" selection-end-line="214" selection-end-column="40" />
+          <folding>
+            <element signature="e#100#127#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/web/check.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="13" column="4" lean-forward="true" selection-start-line="13" selection-start-column="4" selection-end-line="21" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/controllers/SiteController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1740">
+          <caret line="60" column="5" lean-forward="true" selection-start-line="60" selection-start-column="5" selection-end-line="60" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/controllers/ToolsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
+          <folding>
+            <element signature="e#38#68#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/modules/rbac/controllers/WechatController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6496">
+          <caret line="224" column="5" lean-forward="true" selection-start-line="224" selection-start-column="5" selection-end-line="224" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/modules/content/views/navigation/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1682">
+          <caret line="58" column="30" lean-forward="true" selection-start-line="58" selection-start-column="30" selection-end-line="58" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/modules/rbac/controllers/WechatController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5162">
+          <caret line="178" column="22" selection-start-line="178" selection-start-column="22" selection-end-line="178" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/modules/content/controllers/CompanyController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5423">
+          <caret line="187" column="36" selection-start-line="187" selection-start-column="36" selection-end-line="187" selection-end-column="36" />
+          <folding>
+            <element signature="e#100#127#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/modules/content/views/navigation/js/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4350">
+          <caret line="150" column="5" lean-forward="true" selection-start-line="150" selection-start-column="5" selection-end-line="150" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/views/site/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="754">
+          <caret line="27" column="40" lean-forward="true" selection-start-line="27" selection-start-column="40" selection-end-line="27" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/modules/rbac/views/user/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1189">
+          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/modules/rbac/controllers/WechatController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3712">
+          <caret line="133" column="28" selection-start-line="133" selection-start-column="20" selection-end-line="133" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/views/layouts/main-login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="696">
+          <caret line="25" column="29" lean-forward="true" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/modules/rbac/controllers/UserController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1450">
+          <caret line="65" column="30" selection-start-line="65" selection-start-column="30" selection-end-line="65" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/views/site/nav.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-109">
+          <caret line="11" column="36" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/views/layouts/main-index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-348">
+          <caret line="9" column="27" lean-forward="true" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/views/layouts/main.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="16" column="22" lean-forward="true" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/views/site/content.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-58">
+          <caret line="10" column="21" lean-forward="true" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/views/site/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="7" column="10" lean-forward="true" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/views/site/header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="6" column="43" selection-start-line="6" selection-start-column="43" selection-end-line="6" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/views/layouts/main-login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="696">
+          <caret line="25" column="29" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/views/site/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="754">
+          <caret line="27" column="40" selection-start-line="27" selection-start-column="40" selection-end-line="27" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/modules/qingrui/views/qing-type/js/_script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="58">
+          <caret line="2" column="44" lean-forward="true" selection-start-line="2" selection-start-column="44" selection-end-line="2" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/modules/content/controllers/NavigationController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="42" column="33" lean-forward="true" selection-start-line="42" selection-start-column="33" selection-end-line="42" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/modules/rbac/views/user/js/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="326">
+          <caret line="141" column="7" selection-start-line="141" selection-start-column="7" selection-end-line="141" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/modules/rbac/views/user/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3183">
+          <caret line="13" column="62" lean-forward="true" selection-start-line="13" selection-start-column="62" selection-end-line="13" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/modules/rbac/controllers/UserController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="703">
+          <caret line="317" column="16" lean-forward="true" selection-start-line="317" selection-start-column="16" selection-end-line="317" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/modules/content/models/Company.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2117">
+          <caret line="72" column="5" lean-forward="true" selection-start-line="72" selection-start-column="5" selection-end-line="72" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/modules/content/models/Test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/modules/qingrui/controllers/QingCaseController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="137" column="40" lean-forward="true" selection-start-line="137" selection-start-column="40" selection-end-line="137" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/modules/rbac/views/user/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1182">
+          <caret line="10" column="18" lean-forward="true" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/modules/content/views/navigation/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2088">
+          <caret line="76" column="34" selection-start-line="76" selection-start-column="34" selection-end-line="76" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/modules/content/views/navigation/js/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4582">
+          <caret line="158" column="97" selection-start-line="158" selection-start-column="97" selection-end-line="158" selection-end-column="97" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/modules/content/controllers/CompanyController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5829">
+          <caret line="214" column="40" selection-start-line="214" selection-start-column="40" selection-end-line="214" selection-end-column="40" />
+          <folding>
+            <element signature="e#100#127#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/web/check.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="21" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/controllers/SiteController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1624">
+          <caret line="60" column="5" selection-start-line="60" selection-start-column="5" selection-end-line="60" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/controllers/ToolsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
+          <folding>
+            <element signature="e#38#68#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/modules/rbac/controllers/WechatController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="233" column="34" lean-forward="true" selection-start-line="233" selection-start-column="34" selection-end-line="233" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/models/CompanyModel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="77" column="44" selection-start-line="77" selection-start-column="32" selection-end-line="77" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/models/PublicModel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="40" column="18" lean-forward="true" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

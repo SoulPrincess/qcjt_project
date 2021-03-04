@@ -31,7 +31,7 @@ class GuanGoods extends \yii\db\ActiveRecord
         return [
             [['type_id'], 'required'],
            // [['type_id'], 'unique'],
-            [['intro', 'content', 'cost','cover_img'], 'default'],
+            [['intro', 'content', 'cost','cover_img','contact','phone'], 'default'],
             [['type_id'], 'integer'],
             [['status'], 'safe'],
         ];
@@ -51,6 +51,7 @@ class GuanGoods extends \yii\db\ActiveRecord
             'cost' => '费用',
             'cover_img' => 'LOGO',
             'status' => '是否显示',
+
         ];
     }
 
@@ -82,5 +83,65 @@ class GuanGoods extends \yii\db\ActiveRecord
             ->where(['a.goods_id'=>$goods_id])
             ->all();
         return $data;
+    }
+
+    /*官网商品导入查重
+     *@author:LHP
+     * @time:2020-04-26
+     * */
+    public function goodsRepeat()
+    {
+        $query = new yii\db\Query();
+        $result = $query->select(['g.id g_id','type_name','t.intro','pid','t.id'])
+            ->from(['t'=>'t_guan_type'])
+            ->leftJoin(['g'=>'t_guan_goods'],'g.type_id=t.id')
+            ->where(['<>','pid',''])
+            ->orderby('t.sort asc')
+            ->all();
+        foreach ($result as $v) {//商品名称
+            $result['typename'][] = $v['type_name'];
+
+            if ($v['id']) {
+                $result[$v['type_name']] = $v['id'];
+            }
+            if(!empty($v['g_id'])){
+                $result['guangoods'][] = $v['type_name'];
+            }
+        }
+        return $result;
+    }
+
+    public function goodsImport($param = [])
+    {
+        $data=[
+            'type_id'=>$param[0],
+            'intro'=>$param[1],
+            'content'=>$param[4],
+            'cost'=>$param[2],
+            'status'=>$param[5],
+            'cover_img' => $param[3],
+            'created_at' =>$param[6],
+            'updated_at' =>$param[7]
+        ];
+        $result=self::addGuanGoods($data);
+        return $result;
+    }
+
+    /*官网商品导入数据库
+   *$param array
+   *@time:2020-4-26
+   *@author:Lhp
+   */
+    public function addGuanGoods($param=[]){
+        $connection=Yii::$app->db;
+        $transaction=$connection->beginTransaction();
+        try{
+            $connection->createCommand()->insert('t_guan_goods',$param)->execute();
+            $transaction->commit();
+            return true;
+        }catch (\Exception $e){
+            $transaction->rollBack();
+            return false;
+        }
     }
 }

@@ -2,6 +2,7 @@
 
 namespace official\models\searchs;
 
+use official\models\GuanTypeImg;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
@@ -19,8 +20,8 @@ class GuanType extends GuanTypeModel
     public function rules()
     {
         return [
-            [['id', 'pid', 'sort'], 'integer'],
-            [['type_name'], 'safe'],
+            [['id', 'pid', 'sort','hot','home_status'], 'integer'],
+            [['type_name','status'], 'safe'],
         ];
     }
 
@@ -45,7 +46,6 @@ class GuanType extends GuanTypeModel
             ->joinWith(['guanTypeParent' => function ($q) {
                 $q->from(GuanTypeModel::tableName() . ' parent');
             }]);
-
         $dataProvider = new ActiveDataProvider([
             'query' => $query
         ]);
@@ -71,11 +71,24 @@ class GuanType extends GuanTypeModel
             return $dataProvider;
         }
         $query->andFilterWhere([
-            't.id' => $this->id,
-            't.pid' => $this->pid,
+            'or',
+            ['t.id' => $this->id],
+            ['t.pid' => $this->id]
         ]);
-        $query->andFilterWhere(['like', 'lower(t.type_name)', strtolower($this->type_name)]);
-
+        $query->andFilterWhere(['t.status'=>1]);
+        return $dataProvider;
+    }
+    /**
+     * 多图片
+     * @param  array $params
+     * @return \yii\data\ActiveDataProvider
+     */
+    public function GuanTypeImg($where=[])
+    {
+        $img=GuanTypeImg::findAll(['type_id'=>$where['id']]);
+        $dataProvider = new ActiveDataProvider([
+            'query' => $img,
+        ]);
         return $dataProvider;
     }
 }

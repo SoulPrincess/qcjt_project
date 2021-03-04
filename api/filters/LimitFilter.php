@@ -39,7 +39,7 @@ class LimitFilter extends BaseFilter
                 }
                 $this->_response([], 50001);//请勿重复提交
             } else {
-                $cache->set($lock_prefix, ($num + 1), 1);;
+                $cache->set($lock_prefix, ($num + 1), 1);
             }
         }
         return parent::beforeAction($action);

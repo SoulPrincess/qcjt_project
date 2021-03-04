@@ -131,4 +131,65 @@ layui.config({
 		});
         return false;
 	});
+    $('#weixin').click(function(){
+        getQrcode();
+    });
+    // setInterval(checkLogin, 2000); //每2秒发送一次请求
+    // function checkLogin(){
+    //     console.log(scene_str);
+    //     $.post("/content/company/check-login", {scene_str:scene_str}, function(data){
+    //         console.log(data);
+    //         if(data){
+    //             //做逻辑判断，登录跳转
+    //         }
+    //     },"Json");
+    // }
+    timestamp_version = new Date().getTime();
+    ticket_login = "";
+    function getQrcode() {
+        $.ajaxSetup({
+            async: false
+        });
+        $.get("/content/company/getcode?timestamp_version=" + timestamp_version,
+            function(res) {console.log(res);
+                if (res.code !=200) {
+                    alert(res.msg);
+                } else {
+                    if (res.msg) {
+                        var url = "https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=" + res.msg;
+                        $("#login_container img").attr("src", url);
+                        ticket_login = res.msg;
+                        checklogin()
+                    }
+                }
+            },
+            "JSON");
+    }
+    var time = null;
+    function checklogin() {
+        try {
+            clearInterval(time)
+        } catch(e) {}
+        time = setInterval(function() {
+            $.ajaxSetup({
+                async: false
+            });
+            $.get("/content/company/check-login?" + timestamp_version, {
+                    "ticket": ticket_login
+                },
+                function(res) {
+                    if (res.code == 100) {
+                        getQrcode()
+                    }
+                    if (res.code == 200) {
+                        clearInterval(time);
+                        alert('登陆成功');
+                        setTimeout(function() {
+                            window.location.reload()
+                        },1000)
+                    }
+                },
+                "json")
+        },3000)}
 });
+

@@ -21,10 +21,12 @@ class PublicModel extends \yii\db\ActiveRecord{
     protected $GUAN_NAVIGATION_TABLE='t_guan_navigation';//官网导航表
     protected $GUAN_TYPE_TABLE='t_guan_type';//官网类别表
     protected $GUAN_GOODS_TABLE='t_guan_goods';//官网商品表
-    protected $GUAN_GOODS_ATTRIBUTE_TABLE='t_guan_goods_attribute';//官网商品表
+    protected $GUAN_GOODS_ATTRIBUTE_TABLE='t_guan_goods_attribute';//官网商品属性表
     protected $GUAN_PRODUCT_TABLE='t_guan_product';//官网产品表
-
-
+    /*************************************青锐国际表***********************************/
+    protected $QING_CASE_TABLE='t_qing_case';//案例表
+    protected $QING_TYPE_TABLE='t_qing_type';//类别表
+    protected $QING_MESS_TABLE='t_qing_mess';//信息表
 
     /***************************************分页参数***********************************/
     protected $defaultPage=1;

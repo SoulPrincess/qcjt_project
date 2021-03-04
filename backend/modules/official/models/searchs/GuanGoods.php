@@ -16,13 +16,14 @@ use official\models\GuanType as GuanTypeModel;
 class GuanGoods extends GuanGoodsModel
 {
     public $type_name;
+    public $pid;
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['type_name'], 'safe'],
+            [['type_name','cover_img','status','pid'], 'safe'],
         ];
     }
 
@@ -51,9 +52,14 @@ class GuanGoods extends GuanGoodsModel
         $dataProvider = new ActiveDataProvider([
             'query' => $query
         ]);
-
         $sort = $dataProvider->getSort();
-        //$sort->defaultOrder = ['g.created_at' => SORT_ASC];
+        $sort->attributes['g.updated_at'] = [
+            'asc' => ['g.updated_at' => SORT_ASC,],
+            'desc' => ['g.updated_at' => SORT_DESC],
+            'label' => 'updated_at',
+        ];
+
+        $sort->defaultOrder = ['g.updated_at' => SORT_DESC];
         if (!($this->load($params) && $this->validate())) {
             return $dataProvider;
         }
@@ -61,6 +67,8 @@ class GuanGoods extends GuanGoodsModel
             'g.id' => $this->id,
         ]);
         $query->andFilterWhere(['like', 'type.type_name', $this->type_name]);
+        $query->andFilterWhere(['g.status'=>$this->status]);
+        $query->andFilterWhere(['type.pid'=>$this->pid]);
 
         return $dataProvider;
     }

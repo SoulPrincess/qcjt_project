@@ -43,7 +43,7 @@ $this->registerJs($this->render('js/index.js'));
                 'filter' => Html::activeTextInput($searchModel, 'parent_name', [
                     'class' => 'form-control', 'id' => null
                 ]),
-                'label' => '父级名称',
+                'label' => '父级名称11',
             ],
             'url',
             'sort',
@@ -72,5 +72,10 @@ $this->registerJs($this->render('js/index.js'));
     ]);
     ?>
 <?php Pjax::end(); ?>
-
+    <div>
+        <button id="weixin">微信登录</button>
+        <div id="login_container">
+            <img src="" alt="二维码" id="wechat_img_login">
+        </div>
+    </div>
 </div>

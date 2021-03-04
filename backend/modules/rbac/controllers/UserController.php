@@ -25,7 +25,6 @@ use yii\web\ForbiddenHttpException;
 class UserController extends Controller
 {
     private $_oldMailPath;
-
     /**
      * @inheritdoc
      */
@@ -320,4 +319,5 @@ class UserController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
 }

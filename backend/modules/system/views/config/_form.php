@@ -17,6 +17,7 @@ $this->registerJs($this->render('js/upload.js'));
 
     <?= $form->field($model, 'value')->textarea(['rows' => 6,'class'=>'layui-textarea','id'=>'value_area']) ?>
 
+
     <?= $form->field($model, 'remark')->textInput(['maxlength' => true,'class'=>'layui-input']) ?>
 
     <?= $form->field($model, 'sort')->textInput(['class'=>'layui-input']) ?>

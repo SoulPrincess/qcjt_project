@@ -2,9 +2,18 @@
 return[
     'components'=>[
         //数据库配置
+//        'db'=>[
+//            'class'=>'yii\db\Connection',
+//            'dsn' => 'mysql:host=47.100.189.84;dbname=qc_data',
+//            'username'=>'qingcheng',
+//            'password'=>'qingcheng_mysql',
+//            'charset'=>'utf8',
+//            'tablePrefix'=>'t_',
+//
+//        ],
         'db'=>[
             'class'=>'yii\db\Connection',
-            'dsn' => 'mysql:host=localhost;dbname=qc_data',
+            'dsn' => 'mysql:host=127.0.0.1;dbname=qc_data',
             'username'=>'root',
             'password'=>'root',
             'charset'=>'utf8',

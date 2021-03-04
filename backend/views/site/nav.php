@@ -4,18 +4,18 @@ use backend\widgets\Menu;
 ?>
 <?php
 		$callback = function($menu){
-            $items = $menu['children']; 
-            $return = [ 
-                'label' => $menu['name'], 
-                'url' => [$menu['route']], 
+            $items = $menu['children'];
+            $return = [
+                'label' => $menu['name'],
+                'url' => [$menu['route']],
             ];
 			if(isset($menu['icon'])){
-				$return['icon'] = $menu['icon']; 
+				$return['icon'] = $menu['icon'];
 			}else{
-				$return['icon'] = 'fa fa-circle-o'; 
+				$return['icon'] = 'fa fa-circle-o';
 			}
             $items && $return['items'] = $items;
-            return $return; 
+            return $return;
         };
         $menu = Menu::widget([
             'options' => ['class' => 'layui-nav layui-nav-tree'],

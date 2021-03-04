@@ -7,7 +7,9 @@
  */
 namespace content\controllers;
 use content\models\Company;
+use content\models\Test;
 use rbac\components\Helper;
+use rbac\controllers\WechatController;
 use yii;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
@@ -183,5 +185,36 @@ class CompanyController extends Controller{
             ]);
         }
     }
-
+    public function actionGetcode(){
+        $scene_str = $_GET['timestamp_version'];
+        $wxservice=new WechatController();
+        $result = json_decode($wxservice->getQrcodeByStr($scene_str), true);
+        if(isset($result['ticket'])){
+            return json_encode(['code'=>200,"msg"=>$result['ticket']]);
+        }else{
+            return json_encode(['code'=>500,"msg"=>'失败重新获取']);
+        }
+    }
+    public function actionCheckLogin(){
+        if(isset($_GET['scene_str']) && $_GET['scene_str']){
+            $arr=Test::find()->select('id')->where(['scene_str'=>$_POST['scene_str']])->one();
+            if($arr){
+                return json_encode(['code'=>200,"msg"=>'login']);
+            }else{
+                return json_encode(['code'=>100,"msg"=>'no login']);
+            }
+        }else{
+            return json_encode(['code'=>-1,"msg"=>'网络错误']);
+        }
+    }
+    public function actionCallBack(){
+        $WeChat = new WechatController();
+        $result = $WeChat->callback();
+        print_r($result);die;
+    }
+    public function actionServerCheck(){
+        $WeChat = new WechatController();
+        $result = $WeChat->bindServerCheck('weixin');
+        print_r($result);die;
+    }
 }

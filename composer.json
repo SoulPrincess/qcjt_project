@@ -20,7 +20,10 @@
         "yiisoft/yii2-swiftmailer": "~2.0.0",
         "zoujingli/wechat-developer": "^1.1",
         "kartik-v/yii2-grid": "@dev",
-        "kartik-v/yii2-editable": "@dev"
+        "kartik-v/yii2-editable": "@dev",
+        "kucha/ueditor": "*",
+        "phpoffice/phpexcel": "^1.8",
+        "jtcczu/yii2-applet": "^1.1"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

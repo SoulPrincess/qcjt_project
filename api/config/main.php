@@ -29,6 +29,7 @@ return [
         ],
         'request' => [
             'csrfParam' => '_csrf-api',
+            'baseUrl' => '', // 修改 baseUrl
         ],
         'user' => [
             'identityClass' => 'common\models\User',
